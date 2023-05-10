@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class Hotel {
     private String hotelId;
