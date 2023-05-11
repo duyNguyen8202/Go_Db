@@ -21,7 +21,7 @@ public class PlaceDAO {
 		PreparedStatement pstm = connection.prepareStatement(query);
 		pstm.setString(1, placeId);
 		ResultSet rs = pstm.executeQuery();
-		while (rs.next()) {
+		if (rs.next()) {
 			return true;
 		}
 		return false;

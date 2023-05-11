@@ -4,12 +4,15 @@
   <welcome-file-list>
     <welcome-file>home</welcome-file>
   </welcome-file-list>
-    <servlet>
+  
+<!--     <servlet>
         <servlet-name>AdminPlaceController</servlet-name>
         <servlet-class>Controller.Admin.AdminPlaceController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AdminPlaceController</servlet-name>
-        <url-pattern>/places/*</url-pattern>
-    </servlet-mapping>
+        <url-pattern>/admin/places</url-pattern>
+    </servlet-mapping> -->
+    
+    
 </web-app>
