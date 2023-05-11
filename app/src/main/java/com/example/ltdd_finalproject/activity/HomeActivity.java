@@ -14,7 +14,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_tour);
+        setContentView(R.layout.activity_main2);
         anhXa();
         setEvent();
     }
