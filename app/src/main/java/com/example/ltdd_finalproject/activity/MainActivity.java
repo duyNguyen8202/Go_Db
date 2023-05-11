@@ -9,12 +9,13 @@ import android.widget.Button;
 
 import com.example.ltdd_finalproject.R;
 
-public class HomeActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
+
     Button allTourBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_tour);
+        setContentView(R.layout.activity_main);
         anhXa();
         setEvent();
     }
@@ -26,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         allTourBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, AllTourActivity.class);
+                Intent intent = new Intent(MainActivity.this, AllTourActivity.class);
                 startActivity(intent);
             }
         });
