@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +16,19 @@ import com.example.ltdd_finalproject.models.Tour;
 import java.util.List;
 
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder>{
+    private static final  String TAG="TourAdapter";
     private List<Tour> tourList;
-    public void setData(List<Tour> list)
-    {
-        this.tourList = list;
-        notifyDataSetChanged();
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
+    public TourAdapter(Context context, List<Tour> datas){
+        mContext = context;
+        tourList = datas;
+        mLayoutInflater = LayoutInflater.from(context);
     }
     @NonNull
     @Override
     public TourViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tour_item,parent,false);
+        View view = mLayoutInflater.inflate(R.layout.tour_item,parent,false);
         return new TourViewHolder(view);
     }
 
@@ -35,11 +39,11 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
             return;
         }
         //holder.imageViewTour.setImageResource(tour.getImageLink());
-        holder.textViewNgayDi.setText(tour.getDateGo().toString());
-        holder.textViewPrice.setText(tour.getPrice().toString());
-        holder.textViewNoiDi.setText(tour.getPlaceGo());
-        holder.textViewSoNguoi.setText(tour.getNumPerson());
-        holder.textViewTourName.setText(tour.getTourName());
+        holder.textViewNgayDi.setText(String.valueOf(tour.getDateGo()));
+        holder.textViewPrice.setText(String.valueOf(tour.getPrice()));
+        holder.textViewNoiDi.setText(String.valueOf(tour.getPlaceGo()));
+        holder.textViewSoNguoi.setText(String.valueOf(tour.getNumPerson()));
+        holder.textViewTourName.setText(String.valueOf(tour.getTourName()));
     }
 
     @Override
