@@ -3,13 +3,22 @@ package Model;
 public class Account {
     private String accountId;
     private String accountType;
-    private String customerId;
+    private String username;
+    
+	private String customerId;
     private String staffId;
     private boolean acc_status;
     private String acc_password;
 
     public boolean isAcc_status() {
 		return acc_status;
+	}
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setAcc_status(boolean acc_status) {
@@ -23,14 +32,34 @@ public class Account {
 	public void setAcc_password(String acc_password) {
 		this.acc_password = acc_password;
 	}
+	public void checkId()
+	{
+        if(customerId == "")
+		{
+			this.customerId = null;
+		}
+        else if(staffId == "")
+		{
+			this.staffId = null;
+		}
+	}
 
-	public Account(String accountId, String accountType, String customerId, String staffId,boolean status,String password) {
+	public Account(String accountId,String userName , String accountType, String staffId, String customerId,boolean Status,String Password) {
         this.accountId = accountId;
+        this.username = userName;
         this.accountType = accountType;
-        this.customerId = customerId;
         this.staffId = staffId;
-        this.acc_status=status;
-        this.acc_password=password;
+        this.customerId = customerId;
+        this.acc_status= Status;
+        this.acc_password=Password;
+        if(customerId == "")
+		{
+			this.customerId = null;
+		}
+		if(staffId == "")
+		{
+			this.staffId = null;
+		}
     }
 
     public String getAccountId() {
