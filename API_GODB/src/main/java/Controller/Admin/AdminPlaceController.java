@@ -14,241 +14,119 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
+import DAO.AccountDAO;
 import DAO.PlaceDAO;
+import Model.Account;
 import Model.Place;
-import DBConnect.DBConnection;
+import DBConnect.DBConnect;
 
-/**
- * Servlet implementation class PlaceController
- */
-@WebServlet(urlPatterns = { "/admin/places", "/admin/placeDetail", "/listPlace" })
+@WebServlet(urlPatterns = { "/admin/places" })
 public class AdminPlaceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private PlaceDAO placeDAO;
+	private Connection conn;
+
+	public void init() throws ServletException {
+		try {
+			DBConnect dbConnect = new DBConnect();
+			this.conn = dbConnect.getConnection();
+			placeDAO = new PlaceDAO(conn);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
 
 	public AdminPlaceController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
-//    ///
-//    
-//
-//    
-////    private final Gson gson = new Gson();
-//
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        Connection conn = null;
-//        try{
-//    		conn=DBConnection.getConnection();
-//    	}
-//    	catch (SQLException | ClassNotFoundException e)
-//    	{
-//    		e.printStackTrace();
-//    	}
-//        PlaceDAO placeDAO = new PlaceDAO(conn);
-//        
-//    	String pathInfo = request.getPathInfo();
-//        if (pathInfo == null || pathInfo.equals("/")) {
-//            // Lấy danh sách tất cả các địa điểm
-//            List<Place> places;
-//			try {
-//				places = placeDAO.getPlaces();
-//
-//	            String json = gson.toJson(places);
-//	            response.setContentType("application/json");
-//	            response.getWriter().write(json);
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//        } else {
-//            // Lấy địa điểm theo id
-//            String placeId = pathInfo.substring(1);
-//            Place place;
-//			try {
-//				place = placeDAO.getPlaceById(placeId);
-//                String json = gson.toJson(place);
-//                response.setContentType("application/json");
-//                response.getWriter().write(json);
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//        }
-//    }
-//    
-//    private final Gson gson = new Gson();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		String path = request.getContextPath() + request.getServletPath();
-		Connection conn = null;
 
 		List<Place> places = null;
-
+		// lấy list các place
 		try {
-			conn = DBConnection.getConnection();
-		} catch (SQLException | ClassNotFoundException e) {
+			places = placeDAO.getPlaces();
+			ObjectMapper obj = new ObjectMapper();
+			obj.writeValue(response.getOutputStream(), places);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		PlaceDAO dao = new PlaceDAO(conn);
-		System.out.println(path);
-
-		// lấy list các place
-		if (path.contains("/admin/places")) {
-			try {
-				places = dao.getPlaces();
-				ObjectMapper obj = new ObjectMapper();
-				conn.close();
-				obj.writeValue(response.getOutputStream(), places);
-
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		response.setContentType("application/json;charset=UTF-8");
-		String path = request.getContextPath() + request.getServletPath();
-		Connection conn = null;
-
-		try {
-			conn = DBConnection.getConnection();
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		response.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
 		String placeId = request.getParameter("place_id");
-		PlaceDAO placeDAO = new PlaceDAO(conn);
-
-		// kiểm tra tồn tại
-		try {
-			Boolean checkPlace = placeDAO.CheckPlace(placeId);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 		// lấy thông tin một place
-		if (path.contains("/admin/placeDetail")) {
+		if ("search".equals(action)) {
 			try {
 				Place place = placeDAO.getPlaceById(placeId);
-				ObjectMapper obj = new ObjectMapper();
-				conn.close();
-				obj.writeValue(response.getOutputStream(), place);
+				if (place != null) {
+					ObjectMapper obj = new ObjectMapper();
+					obj.writeValue(response.getOutputStream(), place);
+				} else {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND);
+				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			}
-//		} else {
-//
-//			String placeJson = request.getReader().readLine();
-//			Place place = gson.fromJson(placeJson, Place.class);
-//
-//			// thêm
-//			try {
-//				placeDAO.addPlace(place);
-//				response.setStatus(HttpServletResponse.SC_CREATED);
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+		} else if ("add".equals(action)) {
+
+			String placeName = request.getParameter("place_id");
+			String dec = request.getParameter("dec");
+			String contents = request.getParameter("contents");
+			String imageLink = request.getParameter("image_link");
+			Place newPlace = new Place(placeId, placeName, dec, contents, imageLink);
+
+			try {
+				placeDAO.addPlace(newPlace);
+				response.setStatus(HttpServletResponse.SC_CREATED);
+				response.getWriter().write("Thêm địa điểm thành công." +"\n");
+				response.getWriter().write(new ObjectMapper().writeValueAsString(newPlace));
+			} catch (SQLException e) {
+				e.printStackTrace();
+				response.getWriter().write("Lỗi khi thêm địa điểm.");
+			}
+		}
+		else if("update".equals(action))
+		{
+			try {
+				Place place = placeDAO.getPlaceById(placeId);
+
+				if (place == null) {
+					response.sendError(HttpServletResponse.SC_NOT_FOUND);
+					return;
+				}
+				String placeName = request.getParameter("place_name");
+				String dec = request.getParameter("dec");
+				String contents = request.getParameter("contents");
+				String imageLink = request.getParameter("image_link");
+
+				place.setPlaceName(placeName);
+				place.setDec(dec);
+				place.setContents(contents);
+				place.setImageLink(imageLink);
+				placeDAO.updatePlace(place);
+				
+				Place placecheck = placeDAO.getPlaceById(placeId);
+				response.getWriter().write("Cập nhật địa điểm thành công."+ "\n");
+				response.getWriter().write(new ObjectMapper().writeValueAsString(placecheck));
+			} catch (SQLException e) {
+				e.printStackTrace();
+				response.getWriter().write("Lỗi khi sửa địa điểm.");
+			}
 		}
 
 	}
 
-	/**
-	 * @see HttpServlet#doPut(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-//	protected void doPut(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.setContentType("application/json;charset=UTF-8");
-//		String path = request.getContextPath() + request.getServletPath();
-//		Connection conn = null;
-//
-//		try {
-//			conn = DBConnection.getConnection();
-//		} catch (SQLException | ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		String placeId = request.getParameter("place_id");
-//		PlaceDAO placeDAO = new PlaceDAO(conn);
-//
-//		try {
-//			// kiểm tra place tồn tại chưa
-//			Boolean checkPlace = placeDAO.CheckPlace(placeId);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		// Sửa địa điểm
-//		String pathInfo = request.getPathInfo();
-//		if (pathInfo == null || pathInfo.equals("/")) {
-//			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-//		} else {
-//			Place place = gson.fromJson(request.getReader(), Place.class);
-//			place.setPlaceId(placeId);
-//			try {
-//				placeDAO.updatePlace(place);
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-
-	/**
-	 * @see HttpServlet#doDelete(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-
-	// chưa có xóa địa điểm
-
-//    	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//    		// TODO Auto-generated method stub
-//    		response.setContentType("application/json;charset=UTF-8");
-//    		String path = request.getContextPath() + request.getServletPath();
-//    		Connection conn = null;
-//    		
-//    		String placeId = request.getParameter("place_id");
-//    		PlaceDAO placeDAO = new PlaceDAO(conn);
-//    	
-//            try {
-//            	//kiểm tra place tồn tại chưa
-//    			Boolean checkPlace = placeDAO.CheckPlace(placeId);
-//    		} catch (SQLException e) {
-//    			// TODO Auto-generated catch block
-//    			e.printStackTrace();
-//    		}
-//    		
-//    		// Xóa địa điểm
-//            String pathInfo = request.getPathInfo();
-//            if (pathInfo == null || pathInfo.equals("/")) {
-//                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
-//            } else {
-//                try {
-//					placeDAO.deletePlace(placeId);
-//				} catch (SQLException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//			}		
-//       }
 
 }

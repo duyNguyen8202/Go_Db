@@ -7,6 +7,8 @@ public class Place {
     private String contents;
     private String imageLink;
 
+    public Place() {}
+    
     public Place(String placeId, String placeName, String dec, String contents, String imageLink) {
         this.placeId = placeId;
         this.placeName = placeName;
