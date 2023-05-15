@@ -21,9 +21,7 @@ import DBConnect.DBConnect;
 
 import Model.Customer;
 
-/**
- * Servlet implementation class CustomerController
- */
+
 @WebServlet(urlPatterns = { "/admin/customer" })
 public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,18 +38,10 @@ public class CustomerController extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public CustomerController() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/json;charset=UTF-8");
@@ -154,7 +144,9 @@ public class CustomerController extends HttpServlet {
 				e.printStackTrace();
 				response.getWriter().write("Lỗi khi cập nhật khách hàng.");
 			}
-		} else if ("delete".equals(action)) {
+		}
+		///////////////////////////////
+		else if ("delete".equals(action)) {
 			try {
 				Customer customer = customerDAO.getCustomerById(customerId);
 				if (customer == null) {
