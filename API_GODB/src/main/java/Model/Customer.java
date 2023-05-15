@@ -1,6 +1,7 @@
 package Model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Customer {
@@ -124,8 +125,11 @@ public class Customer {
 	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
-	public Date getBirthDay() {
-		return birthDay;
+	public String getBirthDay() throws ParseException {
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return outputFormat.format(inputFormat.parse(birthDay.toString()));
+//		return birthDay;
 	}
 	public void setBirthDay(Date birthDay) {
 		this.birthDay = birthDay;
