@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Hotel;
-import com.example.ltdd_finalproject.models.Vehicle;
 
 import java.util.List;
 
@@ -51,9 +50,9 @@ public class HotelAdapter extends
                     mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout,null);
             viewHolder = new ViewHolder();
-            viewHolder.textViewHotelName = (TextView) view.findViewById(R.id.textViewHotelName);
+            viewHolder.textViewHotelName = (TextView) view.findViewById(R.id.textViewTourName);
             viewHolder.textViewProvince = (TextView) view.findViewById(R.id.textViewProvince);
-            viewHolder.textViewDiaChi = (TextView) view.findViewById(R.id.textViewDiaChi);
+            viewHolder.textViewDiaChi = (TextView) view.findViewById(R.id.textViewDiaChiHotel);
             viewHolder.imageViewHotel = (ImageView) view.findViewById(R.id.imageViewHotel);
             view.setTag(viewHolder);
         }else{

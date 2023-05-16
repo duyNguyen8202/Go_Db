@@ -27,7 +27,7 @@ public class AllHotelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_hotel);
         listView = (ListView) findViewById(R.id.listviewHotel);
         themData();
-        hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item);
+        hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item1);
         listView.setAdapter(hotelAdapter);
     }
 
