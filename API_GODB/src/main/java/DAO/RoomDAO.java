@@ -1,6 +1,5 @@
 package DAO;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,7 +16,7 @@ public class RoomDAO {
         this.connection = connection;
     }
 
-    // Thêm đối tượng Room vào database
+    // Thêm Room vào database
     public void addRoom(Room room) throws SQLException {
         String query = "INSERT INTO Room (room_id, hotel_id, room_number, room_type, rental_rate, room_capacity, room_status) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(query);
@@ -31,7 +30,7 @@ public class RoomDAO {
         statement.executeUpdate();
     }
 
-    // Lấy danh sách đối tượng Room từ database
+    // Lấy danh sách Room từ database
     public List<Room> getRooms() throws SQLException {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM Room";
@@ -52,7 +51,7 @@ public class RoomDAO {
         return rooms;
     }
 
-    // Lấy đối tượng Room từ database theo ID
+    // Lấy Room từ database theo ID
     public Room getRoomById(int roomId) throws SQLException {
         String query = "SELECT * FROM Room WHERE room_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
