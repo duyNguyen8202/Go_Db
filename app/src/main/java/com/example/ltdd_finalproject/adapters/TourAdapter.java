@@ -63,10 +63,10 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
             anhXa();
         }
         public void anhXa(){
-            imageViewTour = itemView.findViewById(R.id.imageViewHotel);
+            imageViewTour = itemView.findViewById(R.id.imageViewTour);
             textViewTourName = itemView.findViewById(R.id.textViewTourName);
-            textViewNgayDi = itemView.findViewById(R.id.textViewDiaChiHotel);
-            textViewPrice = itemView.findViewById(R.id.textViewProvince);
+            textViewNgayDi = itemView.findViewById(R.id.textViewNgayDi);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewSoNguoi = itemView.findViewById(R.id.textViewSoNguoi);
             textViewNoiDi = itemView.findViewById(R.id.textViewNoiDi);
         }
