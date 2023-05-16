@@ -20,8 +20,7 @@
             android:layout_width="435dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +40,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textViewProvince"
+                android:id="@+id/textViewProvinceHotel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -51,7 +50,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/textViewDiaChi"
+                android:id="@+id/textViewDiaChiHotel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
