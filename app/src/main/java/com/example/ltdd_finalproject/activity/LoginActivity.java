@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
+import com.example.ltdd_finalproject.adapters.LoginAdapter;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -18,24 +20,57 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordEdit,usernameEdit;
     Button loginButton;
     TextView regisTextview,forgotTextview;
+    private LoginAdapter loginAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         anhXa();
+        loginAdapter = new LoginAdapter();
         setEvent();
     }
-    protected  void setEvent(){
+    protected void setEvent() {
         //Event for login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
+                String username = usernameEdit.getText().toString().trim();
+                String password = passwordEdit.getText().toString().trim();
+
+                if (TextUtils.isEmpty(username)) {
+                    usernameEdit.setError("Vui lòng nhập tên đăng nhập");
+                    usernameEdit.requestFocus();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    passwordEdit.setError("Vui lòng nhập mật khẩu");
+                    passwordEdit.requestFocus();
+                    return;
+                }
+
+                loginAdapter.login(username, password, new LoginAdapter.LoginCallback() {
+                    @Override
+                    public void onLoginSuccess(String message, String accountType) {
+                        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                        // TODO: Handle successful login (e.g., navigate to the main activity)
+                        if ("Staff".equals(accountType)) {
+                            Intent intent = new Intent(LoginActivity.this, StaffActivity.class);
+                            startActivity(intent);
+                            finish(); // Tùy chọn: Để kết thúc LoginActivity sau khi chuyển đến StaffActivity
+                        }
+                    }
+
+                    @Override
+                    public void onLoginFailure(String error) {
+                        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
-        //
+
         //forgot
         forgotTextview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     protected void anhXa(){
 
         loginButton = (Button) findViewById(R.id.loginButton);
