@@ -64,7 +64,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
         }
         public void anhXa(){
             imageViewTour = itemView.findViewById(R.id.imageViewHotel);
-            textViewTourName = itemView.findViewById(R.id.textViewTourName);
+//            textViewTourName = itemView.findViewById(R.id.textViewTourName);
             textViewNgayDi = itemView.findViewById(R.id.textViewDiaChiHotel);
             textViewPrice = itemView.findViewById(R.id.textViewProvince);
             textViewSoNguoi = itemView.findViewById(R.id.textViewSoNguoi);

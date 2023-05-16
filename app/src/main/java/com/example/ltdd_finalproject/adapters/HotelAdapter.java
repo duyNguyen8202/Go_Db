@@ -50,7 +50,7 @@ public class HotelAdapter extends
                     mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout,null);
             viewHolder = new ViewHolder();
-            viewHolder.textViewHotelName = (TextView) view.findViewById(R.id.textViewTourName);
+//            viewHolder.textViewHotelName = (TextView) view.findViewById(R.id.textViewTourName);
             viewHolder.textViewProvince = (TextView) view.findViewById(R.id.textViewProvince);
             viewHolder.textViewDiaChi = (TextView) view.findViewById(R.id.textViewDiaChiHotel);
             viewHolder.imageViewHotel = (ImageView) view.findViewById(R.id.imageViewHotel);

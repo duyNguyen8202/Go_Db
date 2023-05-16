@@ -26,7 +26,7 @@
             android:name=".activity.AllTourActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.StaffActivity"
+            android:name=".activity.IntroActivity"
             android:exported="false" />
         <activity
             android:name=".activity.RegistInfoActivity"
@@ -38,7 +38,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.IntroActivity"
+            android:name=".activity.StaffActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

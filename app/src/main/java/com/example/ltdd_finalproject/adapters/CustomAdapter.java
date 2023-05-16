@@ -53,7 +53,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ImageView imageViewHotel;
         public HotelViewHolder(View view){
             super(view);
-            textViewHotelName=(TextView) view.findViewById(R.id.textViewTourName);
+//            textViewHotelName=(TextView) view.findViewById(R.id.textViewTourName);
             textViewProvince=(TextView) view.findViewById(R.id.textViewProvince);
             textViewDiaChi=(TextView) view.findViewById(R.id.textViewDiaChiHotel);
             imageViewHotel=(ImageView) view.findViewById(R.id.imageViewHotel);
@@ -71,12 +71,12 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private TextView textViewTourName,textViewNgayDi,textViewPrice,textViewSoNguoi,textViewNoiDi;
         public TourViewHolder(View view){
             super(view);
-            textViewTourName=(TextView) view.findViewById(R.id.textViewTourName);
-            textViewNgayDi=(TextView) view.findViewById(R.id.textViewNgayDi);
-            textViewPrice=(TextView) view.findViewById(R.id.textViewPrice);
+//            textViewTourName=(TextView) view.findViewById(R.id.textViewTourName);
+//            textViewNgayDi=(TextView) view.findViewById(R.id.textViewNgayDi);
+//            textViewPrice=(TextView) view.findViewById(R.id.textViewPrice);
             textViewSoNguoi=(TextView) view.findViewById(R.id.textViewSoNguoi);
             textViewNoiDi=(TextView) view.findViewById(R.id.textViewNoiDi);
-            imageViewTour=(ImageView) view.findViewById(R.id.imageViewTour);
+//            imageViewTour=(ImageView) view.findViewById(R.id.imageViewTour);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
