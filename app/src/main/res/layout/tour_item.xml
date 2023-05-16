@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageViewTour"
+            android:id="@+id/imageViewHotel"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:background="#FAFAFA">
 
             <TextView
-                android:id="@+id/textViewTourName"
+                android:id="@+id/textViewHotelName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tour Name"
@@ -45,7 +45,7 @@
                 app:layout_constraintVertical_bias="0.12" />
 
             <TextView
-                android:id="@+id/textViewPrice"
+                android:id="@+id/textViewProvince"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price"
@@ -55,7 +55,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.047"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTourName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHotelName"
                 app:layout_constraintVertical_bias="0.811" />
 
             <TextView
@@ -87,7 +87,7 @@
                 app:layout_constraintVertical_bias="0.528" />
 
             <TextView
-                android:id="@+id/textViewNgayDi"
+                android:id="@+id/textViewDiaChi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
@@ -98,7 +98,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.048"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTourName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewHotelName"
                 app:layout_constraintVertical_bias="0.552" />
 
             <ImageView
