@@ -1,2 +1,2 @@
 # Go_Db
-Proj Android
+Đồ án lập trình di động cuối kì
