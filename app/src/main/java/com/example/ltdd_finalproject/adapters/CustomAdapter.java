@@ -53,8 +53,8 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ImageView imageViewHotel;
         public HotelViewHolder(View view){
             super(view);
-            textViewHotelName=(TextView) view.findViewById(R.id.textViewTourName);
-            textViewProvince=(TextView) view.findViewById(R.id.textViewProvince);
+            textViewHotelName=(TextView) view.findViewById(R.id.textViewHotelName);
+            textViewProvince=(TextView) view.findViewById(R.id.textViewProvinceHotel);
             textViewDiaChi=(TextView) view.findViewById(R.id.textViewDiaChiHotel);
             imageViewHotel=(ImageView) view.findViewById(R.id.imageViewHotel);
             view.setOnClickListener(new View.OnClickListener() {
@@ -124,8 +124,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 hotelViewHolder.textViewHotelName.setText(objectList.get(position).toString());
                 hotelViewHolder.textViewDiaChi.setText(objectList.get(position).toString());
                 hotelViewHolder.textViewProvince.setText(objectList.get(position).toString());
-                hotelViewHolder.imageViewHotel.setImageResource((int)objectList.get(position));
-
+                //hotelViewHolder.imageViewHotel.setImageResource(objectList.get(position));
                 //vehicleViewHolder.imageViewVehicle.setText(objectList.get(position).toString());
                 break;
             case TOUR:
@@ -135,7 +134,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 tourViewHolder.textViewNgayDi.setText(objectList.get(position).toString());
                 tourViewHolder.textViewNoiDi.setText(objectList.get(position).toString());
                 tourViewHolder.textViewSoNguoi.setText(objectList.get(position).toString());
-                tourViewHolder.imageViewTour.setImageResource((int)objectList.get(position));
+                //tourViewHolder.imageViewTour.setImageResource((int)objectList.get(position));
                 //vehicleViewHolder.imageViewVehicle.setText(objectList.get(position).toString());
                 break;
         }
