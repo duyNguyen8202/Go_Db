@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ProfileFragment">
+    tools:context=".activity.TourDetailActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="12">
+
         <TextView
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="Welcom to Profile"
             android:layout_gravity="center"
-            android:textSize="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Hotel Detail"
             android:textColor="#3b608c"
+            android:textSize="30dp"
             android:textStyle="bold">
 
         </TextView>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -38,165 +38,214 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/imageViewProfile"
+                android:id="@+id/imageViewTourDetail"
                 android:layout_width="245dp"
                 android:layout_height="245dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 app:srcCompat="@drawable/profile" />
 
         </LinearLayout>
-
         <TableLayout
-            android:layout_weight="5"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="11">
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Id"
+                    android:text="tourId"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/customerId"
+                    android:id="@+id/txttourId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="20110335"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="fullName"
+                    android:text="tourGuiderId"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/textViewfullName"
+                    android:id="@+id/texttourGuiderId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="nguyen lien"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email"
+                    android:text="placeId"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/textViewEmail"
+                    android:id="@+id/textplaceId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="bichlien@gmail.com"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Gender"
+                    android:text="tourName"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/textViewGender"
+                    android:id="@+id/textViewtourName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Female"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Bithday"
+                    android:text="placeGo"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/textViewbirthDay"
+                    android:id="@+id/textViewplaceGo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="20110335"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Address"
+                    android:text="dateGo"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/textViewaddress"
+                    android:id="@+id/textViewdateGo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="20110335"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+
             <TableRow
-                android:padding="5dp"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="phoneNumber"
+                    android:text="dateBack"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
+
                 <TextView
-                    android:id="@+id/textViewphoneNumber"
+                    android:id="@+id/textViewdateBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="20110335"
                     android:textColor="@color/black"
-                    android:textSize="20dp">
-                </TextView>
+                    android:textSize="20dp"></TextView>
             </TableRow>
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="numPerson"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/textViewnumPerson"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20110335"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="price"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/textViewprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20110335"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
         </TableLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -204,20 +253,6 @@
             android:layout_weight="2"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_logout"
-                style="@android:style/Widget.Button"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Logout"
-                android:textColor="#3b608c"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

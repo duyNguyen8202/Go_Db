@@ -2,22 +2,19 @@ package com.example.ltdd_finalproject.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.activity.AllHotelActivity;
 import com.example.ltdd_finalproject.activity.AllTourActivity;
 import com.example.ltdd_finalproject.activity.AllVehicleActivity;
-import com.example.ltdd_finalproject.activity.HomeActivity;
-import com.example.ltdd_finalproject.activity.MainActivity;
 import com.example.ltdd_finalproject.adapters.CustomAdapter;
 import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;

@@ -8,6 +8,10 @@ import com.example.ltdd_finalproject.models.RegisterResponse;
 import com.example.ltdd_finalproject.models.Room;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
+import com.example.ltdd_finalproject.models.Booking;
+import com.example.ltdd_finalproject.models.LoginResponse;
+import com.example.ltdd_finalproject.models.ProfileResponse;
+import com.example.ltdd_finalproject.models.RegisterResponse;
 
 import java.sql.Date;
 import java.util.List;
@@ -23,8 +27,6 @@ public interface API {
     @POST("admin/account?action=login")
     Call<LoginResponse> login(@Field("username") String username,
                               @Field("password") String password);
-
-
         @FormUrlEncoded
         @POST("admin/account?action=signupcustomer")
         Call<RegisterResponse> registerCustomer(@Field("username") String username,
@@ -39,13 +41,8 @@ public interface API {
     @FormUrlEncoded
     @POST("admin/account?action=profile")
     Call<ProfileResponse> getProfile (@Field("username") String username);
-
-
-
-
-
-
-
+    @GET("admin/booking")
+    Call<List<Booking>> getBooking();
 
 
     // Staff

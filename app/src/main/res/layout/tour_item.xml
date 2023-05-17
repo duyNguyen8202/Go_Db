@@ -31,7 +31,7 @@
             android:background="#FAFAFA">
 
             <TextView
-                android:id="@+id/textName"
+                android:id="@+id/textViewTourName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tour Name"
@@ -45,7 +45,7 @@
                 app:layout_constraintVertical_bias="0.12" />
 
             <TextView
-                android:id="@+id/textPrice"
+                android:id="@+id/textViewPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price"
@@ -55,7 +55,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.047"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textName"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTourName"
                 app:layout_constraintVertical_bias="0.811" />
 
             <TextView
@@ -94,12 +94,12 @@
                 android:text="Ngay di"
                 android:textColor="#0C0C0C"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/textPrice"
+                app:layout_constraintBottom_toTopOf="@+id/textViewPrice"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.048"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textName"
-                app:layout_constraintVertical_bias="0.552" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTourName"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/imageView4"

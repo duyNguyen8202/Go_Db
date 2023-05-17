@@ -17,9 +17,9 @@ import com.example.ltdd_finalproject.adapters.LoginAdapter;
 public class LoginActivity extends AppCompatActivity {
 
     //Init Component
-    EditText passwordEdit, usernameEdit;
+    EditText passwordEdit,usernameEdit;
     Button loginButton;
-    TextView regisTextview, forgotTextview;
+    TextView regisTextview,forgotTextview;
     private LoginAdapter loginAdapter;
 
 
@@ -31,13 +31,11 @@ public class LoginActivity extends AppCompatActivity {
         loginAdapter = new LoginAdapter();
         setEvent();
     }
-
     protected void setEvent() {
         //Event for login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 String username = usernameEdit.getText().toString().trim();
                 String password = passwordEdit.getText().toString().trim();
 
@@ -99,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    protected void anhXa() {
+    protected void anhXa(){
 
         loginButton = (Button) findViewById(R.id.loginButton);
         passwordEdit = (EditText) findViewById(R.id.passwordEdit);

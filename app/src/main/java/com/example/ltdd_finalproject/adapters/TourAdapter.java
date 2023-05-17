@@ -13,29 +13,63 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Tour;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder>{
-    private static final  String TAG="TourAdapter";
-    private final List<Tour> tourList;
-    private final Context mContext;
-    private final LayoutInflater mLayoutInflater;
-    public TourAdapter(Context context, List<Tour> datas){
+public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder> {
+    private static final String TAG = "TourAdapter";
+    private List<Tour> tourList;
+    private List<Tour> filteredList;
+    private OnItemClickListener mListener;
+    private Context mContext;
+    private LayoutInflater mLayoutInflater;
+    public interface OnItemClickListener {
+        void onItemClick(Tour tour);
+    }
+
+    // Constructor and other methods
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+    public TourAdapter(Context context, List<Tour> datas) {
         mContext = context;
         tourList = datas;
+        filteredList = new ArrayList<>(datas);
         mLayoutInflater = LayoutInflater.from(context);
     }
+
     @NonNull
     @Override
     public TourViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mLayoutInflater.inflate(R.layout.tour_item,parent,false);
+        View view = mLayoutInflater.inflate(R.layout.tour_item, parent, false);
         return new TourViewHolder(view);
+    }
+
+    public void filter(String query) {
+        query = query.toLowerCase().trim();
+
+        filteredList.clear();
+
+        if (query.length() == 0) {
+            filteredList.addAll(tourList);
+        } else {
+            for (Tour tour : tourList) {
+                if (tour.getTourName().toLowerCase().contains(query) ||
+                        tour.getPlaceGo().toLowerCase().contains(query)) {
+                    filteredList.add(tour);
+                }
+            }
+        }
+
+        notifyDataSetChanged();
     }
 
     @Override
     public void onBindViewHolder(@NonNull TourViewHolder holder, int position) {
-        Tour tour = tourList.get(position);
-        if (tour==null){
+        Tour tour = filteredList.get(position);
+        if (tour == null) {
             return;
         }
         //holder.imageViewTour.setImageResource(tour.getImageLink());
@@ -48,25 +82,35 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
 
     @Override
     public int getItemCount() {
-        if (tourList != null){
-            return tourList.size();
-        }
-        return 0;
+        return filteredList.size();
     }
 
-    public class TourViewHolder extends RecyclerView.ViewHolder
-    {
+    public class TourViewHolder extends RecyclerView.ViewHolder implements Serializable {
         private ImageView imageViewTour;
-        private TextView textViewTourName,textViewNgayDi,textViewPrice,textViewSoNguoi,textViewNoiDi;
+        private TextView textViewTourName, textViewNgayDi, textViewPrice, textViewSoNguoi, textViewNoiDi;
+
         public TourViewHolder(@NonNull View itemView) {
             super(itemView);
             anhXa();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getBindingAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // Call onItemClick() method of the interface with the clicked tour object
+                            mListener.onItemClick(tourList.get(position));
+                        }
+                    }
+                }
+            });
         }
-        public void anhXa(){
+
+        public void anhXa() {
             imageViewTour = itemView.findViewById(R.id.imageViewTour);
-            textViewTourName = itemView.findViewById(R.id.textName);
+            textViewTourName = itemView.findViewById(R.id.textViewTourName);
             textViewNgayDi = itemView.findViewById(R.id.textViewNgayDi);
-            textViewPrice = itemView.findViewById(R.id.textPrice);
+            textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewSoNguoi = itemView.findViewById(R.id.textViewSoNguoi);
             textViewNoiDi = itemView.findViewById(R.id.textViewNoiDi);
         }
