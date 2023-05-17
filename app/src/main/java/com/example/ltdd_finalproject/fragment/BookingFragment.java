@@ -1,4 +1,4 @@
-package com.example.ltdd_finalproject.activity.fragment;
+package com.example.ltdd_finalproject.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

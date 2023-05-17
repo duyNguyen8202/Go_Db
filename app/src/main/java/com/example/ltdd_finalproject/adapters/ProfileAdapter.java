@@ -36,17 +36,17 @@ public class ProfileAdapter {
                 } else {
                     callback.onProfileFailure("Lỗi kết nối lấy thông tin.");
                 }
-        }
+            }
             @Override
             public void onFailure(Call<ProfileResponse> call, Throwable t) {
                 callback.onProfileFailure("Lỗi kết nối.");
                 t.printStackTrace();
             }
-         });
+        });
     }
     public interface ProfileCallback {
         void onProfileSuccess(String message, String customerId,String fullName, String email, String phoneNumber
-                                ,String imageLink, String address, boolean gender, String birthDay);
+                ,String imageLink, String address, boolean gender, String birthDay);
 
         void onProfileFailure(String error);
     }
