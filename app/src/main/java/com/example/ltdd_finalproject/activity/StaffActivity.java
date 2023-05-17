@@ -8,7 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.adapters.StaffPagerAdapter;
+import com.example.ltdd_finalproject.adapters.MyPagerAdapter;
+import com.example.ltdd_finalproject.fragment.DoanhThuFragment;
+import com.example.ltdd_finalproject.fragment.HotelFragment;
+import com.example.ltdd_finalproject.fragment.PlaceFragment;
+import com.example.ltdd_finalproject.fragment.RoomFragment;
+import com.example.ltdd_finalproject.fragment.TourFragment;
+import com.example.ltdd_finalproject.fragment.VehicleFragment;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
@@ -28,45 +34,23 @@ public class StaffActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff);
 
+        // Khởi tạo ViewPager và PagerAdapter
+        viewPager = findViewById(R.id.view_pager);
+        MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
 
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager viewPager = findViewById(R.id.view_pager);
-        StaffPagerAdapter adapter = new StaffPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
+        pagerAdapter.addFragment(new TourFragment(), "Tour");
+        pagerAdapter.addFragment(new HotelFragment(), "Khách sạn");
+        pagerAdapter.addFragment(new RoomFragment(), "Phòng");
+        pagerAdapter.addFragment(new VehicleFragment(), "Phương tiện");
+        pagerAdapter.addFragment(new PlaceFragment(), "Địa điểm");
+        pagerAdapter.addFragment(new DoanhThuFragment(), "Doanh thu");
+
+        viewPager.setAdapter(pagerAdapter);
+
+        // Khởi tạo TabLayout và kết nối với ViewPager
+        tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 
-        GetAllTour();
     }
 
-    private void GetAllTour() {
-        API service = RetrofitClient.getRetrofitLogin().create(API.class);
-        service.getTours().enqueue(new Callback<List<Tour>>() {
-            @Override
-            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
-                if (response.isSuccessful()) {
-                    List<Tour> tours = response.body();
-                    // Hiển thị danh sách tour lên ViewPager
-                    StaffPagerAdapter adapter = new StaffPagerAdapter(getSupportFragmentManager(), tours);
-                    ViewPager viewPager = findViewById(R.id.view_pager);
-                    viewPager.setAdapter(adapter);
-                    TabLayout tabLayout = findViewById(R.id.tab_layout);
-                    tabLayout.setupWithViewPager(viewPager);
-                } else {
-                    // Xử lý lỗi khi gọi API không thành công
-                    int statusCode = response.code();
-                    if (statusCode == 404) {
-                        Toast.makeText(getApplicationContext(), "Không tìm thấy dữ liệu", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Lỗi " + statusCode + " vui lòng thử lại sau", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Tour>> call, Throwable t) {
-                // Xử lý lỗi kết nối mạng hoặc lỗi khác
-                Log.d("retrofit_error", t.toString());
-            }
-        });
-    }
 }

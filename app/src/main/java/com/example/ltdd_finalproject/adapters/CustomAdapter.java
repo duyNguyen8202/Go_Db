@@ -1,7 +1,6 @@
 package com.example.ltdd_finalproject.adapters;
 
 import android.content.Context;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +21,8 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context mContext;
-    private List<Object> objectList;
+    private final Context mContext;
+    private final List<Object> objectList;
     private static final int VEHICLE=0;
     private static final int HOTEL=1;
     private static final int TOUR=2;
@@ -34,7 +33,8 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.objectList=objects;
     }
     public class VehicleViewHolder extends RecyclerView.ViewHolder{
-        private TextView txtviewModel,txtLicense;
+        private final TextView txtviewModel;
+        private final TextView txtLicense;
         private ImageView imageViewVehicle;
         public VehicleViewHolder(View view){
             super(view);
@@ -68,13 +68,17 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
     public class TourViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imageViewTour;
-        private TextView textViewTourName,textViewNgayDi,textViewPrice,textViewSoNguoi,textViewNoiDi;
+        private final ImageView imageViewTour;
+        private final TextView textViewTourName;
+        private final TextView textViewNgayDi;
+        private final TextView textViewPrice;
+        private final TextView textViewSoNguoi;
+        private final TextView textViewNoiDi;
         public TourViewHolder(View view){
             super(view);
-            textViewTourName=(TextView) view.findViewById(R.id.textViewTourName);
+            textViewTourName=(TextView) view.findViewById(R.id.textName);
             textViewNgayDi=(TextView) view.findViewById(R.id.textViewNgayDi);
-            textViewPrice=(TextView) view.findViewById(R.id.textViewPrice);
+            textViewPrice=(TextView) view.findViewById(R.id.textPrice);
             textViewSoNguoi=(TextView) view.findViewById(R.id.textViewSoNguoi);
             textViewNoiDi=(TextView) view.findViewById(R.id.textViewNoiDi);
             imageViewTour=(ImageView) view.findViewById(R.id.imageViewTour);
@@ -135,7 +139,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 Tour tour = (Tour) objectList.get(position);
                 TourViewHolder tourViewHolder = (TourViewHolder) holder;
                 tourViewHolder.textViewTourName.setText(tour.getTourName());
-                tourViewHolder.textViewNgayDi.setText(tour.getDateGo().toString());
+                tourViewHolder.textViewNgayDi.setText(tour.getDateGo());
                 tourViewHolder.textViewPrice.setText(tour.getPrice().toString());
                 tourViewHolder.textViewSoNguoi.setText(String.valueOf(tour.getNumPerson()));
                 tourViewHolder.textViewNoiDi.setText(tour.getPlaceGo());

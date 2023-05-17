@@ -19,7 +19,7 @@ import java.util.List;
 public class AllHotelActivity extends AppCompatActivity {
     private ListView listView;
     private HotelAdapter hotelAdapter;
-    private List<Hotel> hotelList = new ArrayList<>();
+    private final List<Hotel> hotelList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

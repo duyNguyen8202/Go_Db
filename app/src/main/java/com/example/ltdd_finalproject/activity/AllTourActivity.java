@@ -23,7 +23,7 @@ public class AllTourActivity extends AppCompatActivity {
     Button allTourBtn;
     private RecyclerView recyclerView;
     private TourAdapter mTourAdapter;
-    private List<Tour> mTours = new ArrayList<>();
+    private final List<Tour> mTours = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +31,8 @@ public class AllTourActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recycleViewTours);
 
-        mTours.add(new Tour("1", "1", "1", "Tour 1", "Place 1", LocalDate.of(2023, 6, 1), LocalDate.of(2023, 6, 5), 2, BigDecimal.valueOf(200.0), "https://example.com/image1.jpg", true));
-        mTours.add(new Tour("2", "2", "2", "Tour 2", "Place 2", LocalDate.of(2023, 7, 1), LocalDate.of(2023, 7, 5), 3, BigDecimal.valueOf(300.0), "https://example.com/image2.jpg", false));
+//        mTours.add(new Tour("1", "1", "1", "Tour 1", "Place 1", LocalDate.of(2023, 6, 1), LocalDate.of(2023, 6, 5), 2, BigDecimal.valueOf(200.0), "https://example.com/image1.jpg", true));
+//        mTours.add(new Tour("2", "2", "2", "Tour 2", "Place 2", LocalDate.of(2023, 7, 1), LocalDate.of(2023, 7, 5), 3, BigDecimal.valueOf(300.0), "https://example.com/image2.jpg", false));
 
         mTourAdapter = new TourAdapter(this,mTours);
         recyclerView.setAdapter(mTourAdapter);

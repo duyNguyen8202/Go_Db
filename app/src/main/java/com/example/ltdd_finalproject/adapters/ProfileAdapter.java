@@ -11,7 +11,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class ProfileAdapter {
-    private API myAPI;
+    private final API myAPI;
 
     public ProfileAdapter() {
         Retrofit retrofit = RetrofitClient.getRetrofitLogin();

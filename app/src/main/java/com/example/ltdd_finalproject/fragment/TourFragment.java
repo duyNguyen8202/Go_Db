@@ -1,50 +1,80 @@
 package com.example.ltdd_finalproject.fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.adapters.TourAdapter;
+import com.example.ltdd_finalproject.activity.StaffActivity;
+import com.example.ltdd_finalproject.adapters.staffAdapter.sTourAdapter;
 import com.example.ltdd_finalproject.models.Tour;
+import com.example.ltdd_finalproject.retro.API;
+import com.example.ltdd_finalproject.retro.RetrofitClient;
 
-import java.util.Collections;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TourFragment extends Fragment {
 
-    private final List<Tour> tourList;
     private RecyclerView recyclerView;
-    private TourAdapter adapter;
+    private sTourAdapter tourAdapter;
+    private List<Tour> tourList;
 
-
-    public TourFragment(List<Tour> tours) {
-        tourList = tours;
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_doanh_thu, container, false);
-        // Thiết lập RecyclerView
+
+        // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TourAdapter(requireContext(), tourList);
-        recyclerView.setAdapter(adapter);
+        tourAdapter = new sTourAdapter();
+
+        // Đặt LayoutManager cho RecyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Thiết lập adapter cho RecyclerView
+        recyclerView.setAdapter(tourAdapter);
+
+        // Gọi API để lấy danh sách các tour
+        getTourList();
+
         return view;
     }
 
+    private void getTourList() {
+        // Gọi API để lấy danh sách các tour
+        // Sau khi lấy được danh sách, cập nhật tourList và tourAdapter
+        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        Call<List<Tour>> call = apiService.getTours();
+        call.enqueue(new Callback<List<Tour>>() {
+            @Override
+            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
+
+                tourList = response.body();
+                tourAdapter.setTourList(tourList);
+                Log.d("retrofit_suc", response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Tour>> call, Throwable t) {
+                // Xử lý lỗi
+                Log.d("retrofit_error", t.toString());
+            }
+        });
+    }
 }
 
