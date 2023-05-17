@@ -15,10 +15,10 @@ import java.util.List;
 
 public class HotelAdapter extends
         BaseAdapter {
-    private Context mContext;
+    private final Context mContext;
 
-    private int layout;
-    private List<Hotel> hotelList;
+    private final int layout;
+    private final List<Hotel> hotelList;
     public HotelAdapter(Context context, List<Hotel> data, int layout){
         this.mContext=context;
         this.hotelList=data;
@@ -50,10 +50,10 @@ public class HotelAdapter extends
                     mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout,null);
             viewHolder = new ViewHolder();
-            viewHolder.textViewHotelName = (TextView) view.findViewById(R.id.textViewHotelName);
-            viewHolder.textViewProvince = (TextView) view.findViewById(R.id.textViewProvinceHotel);
-            viewHolder.textViewDiaChi = (TextView) view.findViewById(R.id.textViewDiaChiHotel);
-            viewHolder.imageViewHotel = (ImageView) view.findViewById(R.id.imageViewHotel);
+            viewHolder.textViewHotelName = view.findViewById(R.id.textViewHotelName);
+            viewHolder.textViewProvince = view.findViewById(R.id.textViewProvinceHotel);
+            viewHolder.textViewDiaChi = view.findViewById(R.id.textViewDiaChiHotel);
+            viewHolder.imageViewHotel = view.findViewById(R.id.imageViewHotel);
             view.setTag(viewHolder);
         }else{
             viewHolder= (ViewHolder) view.getTag();

@@ -23,7 +23,7 @@ public class AllTourActivity extends AppCompatActivity {
     Button allTourBtn;
     private RecyclerView recyclerView;
     private TourAdapter mTourAdapter;
-    private List<Tour> mTours = new ArrayList<>();
+    private final List<Tour> mTours = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

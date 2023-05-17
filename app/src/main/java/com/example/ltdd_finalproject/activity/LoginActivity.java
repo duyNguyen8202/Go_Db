@@ -96,11 +96,11 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void anhXa() {
 
-        loginButton = (Button) findViewById(R.id.loginButton);
-        passwordEdit = (EditText) findViewById(R.id.passwordEdit);
-        usernameEdit = (EditText) findViewById(R.id.usernameEdit);
-        regisTextview = (TextView) findViewById(R.id.regisTextview);
-        forgotTextview = (TextView) findViewById(R.id.forgotTextview);
+        loginButton = findViewById(R.id.loginButton);
+        passwordEdit = findViewById(R.id.passwordEdit);
+        usernameEdit = findViewById(R.id.usernameEdit);
+        regisTextview = findViewById(R.id.regisTextview);
+        forgotTextview = findViewById(R.id.forgotTextview);
 
     }
 }

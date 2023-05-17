@@ -16,12 +16,12 @@ import java.util.List;
 public class AllVehicleActivity extends AppCompatActivity {
     private GridView gridView;
     private VehicleAdapter vehicleAdapter;
-    private List<Vehicle> vehicleArrayList = new ArrayList<>();
+    private final List<Vehicle> vehicleArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_vehicle);
-        gridView = (GridView) findViewById(R.id.gridview);
+        gridView = findViewById(R.id.gridview);
         themData();
         vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this,vehicleArrayList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);

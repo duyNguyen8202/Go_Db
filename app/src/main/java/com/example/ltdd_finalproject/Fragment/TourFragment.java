@@ -60,7 +60,7 @@ public class TourFragment extends Fragment {
 //    }
 
 
-    private List<Tour> tourList;
+    private final List<Tour> tourList;
     private RecyclerView recyclerView;
     private TourAdapter adapter;
 

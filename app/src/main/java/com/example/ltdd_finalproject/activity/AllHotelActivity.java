@@ -19,13 +19,13 @@ import java.util.List;
 public class AllHotelActivity extends AppCompatActivity {
     private ListView listView;
     private HotelAdapter hotelAdapter;
-    private List<Hotel> hotelList = new ArrayList<>();
+    private final List<Hotel> hotelList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_hotel);
-        listView = (ListView) findViewById(R.id.listviewHotel);
+        listView = findViewById(R.id.listviewHotel);
         themData();
         hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item1);
         listView.setAdapter(hotelAdapter);

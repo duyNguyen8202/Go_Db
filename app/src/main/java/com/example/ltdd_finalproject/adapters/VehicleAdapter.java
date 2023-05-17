@@ -15,11 +15,11 @@ import com.example.ltdd_finalproject.models.Vehicle;
 import java.util.List;
 
 public class VehicleAdapter extends BaseAdapter {
-    private Context mContext;
+    private final Context mContext;
 
-    private int layout;
+    private final int layout;
     private LayoutInflater mLayoutInflater;
-    private List<Vehicle> vehicleList;
+    private final List<Vehicle> vehicleList;
 
     public VehicleAdapter(Context context, List<Vehicle> datas, int layout){
         this.mContext=context;
@@ -74,9 +74,9 @@ public class VehicleAdapter extends BaseAdapter {
                     mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout,null);
             viewHolder = new ViewHolder();
-            viewHolder.txtviewModel = (TextView) view.findViewById(R.id.txtviewModel);
-            viewHolder.txtLicense = (TextView) view.findViewById(R.id.txtLicense);
-            viewHolder.imageViewVehicle = (ImageView) view.findViewById(R.id.imageViewVehicle);
+            viewHolder.txtviewModel = view.findViewById(R.id.txtviewModel);
+            viewHolder.txtLicense = view.findViewById(R.id.txtLicense);
+            viewHolder.imageViewVehicle = view.findViewById(R.id.imageViewVehicle);
             view.setTag(viewHolder);
         }else{
             viewHolder= (ViewHolder) view.getTag();

@@ -17,9 +17,9 @@ import java.util.List;
 
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder>{
     private static final  String TAG="TourAdapter";
-    private List<Tour> tourList;
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
+    private final List<Tour> tourList;
+    private final Context mContext;
+    private final LayoutInflater mLayoutInflater;
     public TourAdapter(Context context, List<Tour> datas){
         mContext = context;
         tourList = datas;

@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     protected void anhXa(){
-        allTourBtn=(Button) findViewById(R.id.buttonTous);
-        recyclerView = (RecyclerView) findViewById(R.id.rv_multipe_view_type);
+        allTourBtn= findViewById(R.id.buttonTous);
+        recyclerView = findViewById(R.id.rv_multipe_view_type);
 
     }
     protected  void setEvent(){

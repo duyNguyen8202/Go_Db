@@ -31,9 +31,9 @@ public class RegisActivity extends AppCompatActivity {
     }
     protected void anhXa(){
 
-        buttonNext = (Button) findViewById(R.id.buttonNext);
-        editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        editTextRePassword = (EditText) findViewById(R.id.editTextRePassword);
+        buttonNext = findViewById(R.id.buttonNext);
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextRePassword = findViewById(R.id.editTextRePassword);
     }
 }
