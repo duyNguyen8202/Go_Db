@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -22,10 +23,14 @@ public final class ActivityAllHotelBinding implements ViewBinding {
   @NonNull
   public final ListView listviewHotel;
 
+  @NonNull
+  public final SearchView searchHotel;
+
   private ActivityAllHotelBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ListView listviewHotel) {
+      @NonNull ListView listviewHotel, @NonNull SearchView searchHotel) {
     this.rootView = rootView;
     this.listviewHotel = listviewHotel;
+    this.searchHotel = searchHotel;
   }
 
   @Override
@@ -61,7 +66,13 @@ public final class ActivityAllHotelBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityAllHotelBinding((ConstraintLayout) rootView, listviewHotel);
+      id = R.id.searchHotel;
+      SearchView searchHotel = ViewBindings.findChildViewById(rootView, id);
+      if (searchHotel == null) {
+        break missingId;
+      }
+
+      return new ActivityAllHotelBinding((ConstraintLayout) rootView, listviewHotel, searchHotel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

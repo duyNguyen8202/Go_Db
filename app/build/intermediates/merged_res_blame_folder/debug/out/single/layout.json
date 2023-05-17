@@ -1,74 +1,70 @@
 [
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\vehicle_item.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\vehicle_item.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/vehicle_item.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/vehicle_item.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\fragment_booking.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\fragment_booking.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_all_vehicle.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_all_vehicle.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\hotel_item.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\hotel_item.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_staff.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_staff.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\hotel_item1.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\hotel_item1.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/hotel_item1.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/hotel_item1.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_all_hotel.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_all_hotel.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/hotel_item.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/hotel_item.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_main2.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_main2.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_all_tour.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_all_tour.xml"
     },
     {
-        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-36:/layout/fragment_booking.xml",
-        "source": "com.example.ltdd_finalproject.app-main-39:/layout/fragment_booking.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/fragment_booking.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/fragment_booking.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\tour_item.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\tour_item.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/fragment_home.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\fragment_profile.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\fragment_profile.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_main.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_intro.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_intro.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_regist_info.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_regist_info.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_regist_info.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_regist_info.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_login.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_all_vehicle.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_all_vehicle.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_intro.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_intro.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_all_tour.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_all_tour.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/tour_item.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/tour_item.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\fragment_home.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\fragment_home.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_all_hotel.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_all_hotel.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_main.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_regis.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_regis.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_staff.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_staff.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/activity_main2.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/activity_main2.xml"
     },
     {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_login.xml"
-    },
-    {
-        "merged": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-mergeDebugResources-36:\\layout\\activity_regis.xml",
-        "source": "C:\\Users\\khacd\\.gradle\\daemon\\7.5\\com.example.ltdd_finalproject.app-main-39:\\layout\\activity_regis.xml"
+        "merged": "com.example.ltdd_finalproject.app-mergeDebugResources-39:/layout/fragment_profile.xml",
+        "source": "com.example.ltdd_finalproject.app-main-42:/layout/fragment_profile.xml"
     }
 ]

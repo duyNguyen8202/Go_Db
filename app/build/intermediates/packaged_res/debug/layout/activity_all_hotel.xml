@@ -11,12 +11,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <SearchView
+            android:id="@+id/searchHotel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
         <ListView
             android:id="@+id/listviewHotel"
-            android:layout_width="409dp"
-            android:layout_height="354dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp"
-            tools:ignore="MissingConstraints" />
+            tools:layout_editor_absoluteY="1dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
@@ -28,7 +29,7 @@ public class AllTourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tour);
-
+        SearchView searchView = findViewById(R.id.searchTour);
         RecyclerView recyclerView = findViewById(R.id.recycleViewTours);
 
         mTours.add(new Tour("1", "1", "1", "Tour 1", "Place 1", LocalDate.of(2023, 6, 1), LocalDate.of(2023, 6, 5), 2, BigDecimal.valueOf(200.0), "https://example.com/image1.jpg", true));
@@ -40,6 +41,19 @@ public class AllTourActivity extends AppCompatActivity {
         ///////////////
         recyclerView.setLayoutManager(linearLayoutManager);
         //
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Do nothing on submit
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter the data set based on the search query
+                mTourAdapter.filter(newText);
+                return true;
+            }
+        });
     }
 }

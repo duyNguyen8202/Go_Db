@@ -57,6 +57,9 @@ id passwordEdit
 id recycleViewTours
 id regisTextview
 id rv_multipe_view_type
+id searchHotel
+id searchTour
+id searchVehicle
 id textView
 id textView2
 id textView3

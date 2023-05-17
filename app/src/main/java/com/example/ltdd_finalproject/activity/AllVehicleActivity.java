@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.GridView;
+import android.widget.SearchView;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.VehicleAdapter;
@@ -21,10 +22,25 @@ public class AllVehicleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_vehicle);
+        SearchView searchView = findViewById(R.id.searchVehicle);
         gridView = (GridView) findViewById(R.id.gridview);
         themData();
         vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this,vehicleArrayList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Do nothing on submit
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter the data set based on the search query
+                vehicleAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
     }
     protected  void themData()
     {
