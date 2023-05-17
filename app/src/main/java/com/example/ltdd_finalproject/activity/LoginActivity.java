@@ -51,13 +51,19 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                loginAdapter.login(username, password, new LoginAdapter.LoginCallback() {
+                loginAdapter.login(username, password, new LoginAdapter.LoginCallback()
+                {
                     @Override
                     public void onLoginSuccess(String message, String accountType) {
                         Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                         // TODO: Handle successful login (e.g., navigate to the main activity)
                         if ("Staff".equals(accountType)) {
                             Intent intent = new Intent(LoginActivity.this, StaffActivity.class);
+                            startActivity(intent);
+                            finish(); // Tùy chọn: Để kết thúc LoginActivity sau khi chuyển đến StaffActivity
+                        }
+                        else if ("Customer".equals(accountType)) {
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                             finish(); // Tùy chọn: Để kết thúc LoginActivity sau khi chuyển đến StaffActivity
                         }
