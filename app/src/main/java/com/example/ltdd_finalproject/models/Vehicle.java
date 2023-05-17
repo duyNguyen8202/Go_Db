@@ -1,8 +1,9 @@
 package com.example.ltdd_finalproject.models;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Vehicle {
+public class Vehicle implements Serializable {
     private String vehicleId;
     private String rentalCompany;
     private String model;

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.HotelDetailActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="12">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Hotel Detail"
+            android:textColor="#3b608c"
+            android:textSize="30dp"
+            android:textStyle="bold">
+
+        </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical">
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/imageViewHotelDetail"
+                android:layout_width="245dp"
+                android:layout_height="245dp"
+                android:layout_gravity="center_horizontal|center_vertical"
+                app:srcCompat="@drawable/profile" />
+
+        </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="11">
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="hotelId"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/txthotelId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20110335"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="hotelName"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/texthotelName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="nguyen lien"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="hotelAddress"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/texthotelAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="bichlien@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="province"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/textViewprovince"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Female"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="phoneNumber"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/textViewphoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20110335"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="email"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/textViewemail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20110335"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+
+            <TableRow
+                android:layout_marginTop="5dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="website"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+
+                <TextView
+                    android:id="@+id/textViewwebsite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20110335"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"></TextView>
+            </TableRow>
+        </TableLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

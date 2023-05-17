@@ -2,6 +2,7 @@ package com.example.ltdd_finalproject.adapters;
 
 import android.content.Context;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,8 +54,8 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ImageView imageViewHotel;
         public HotelViewHolder(View view){
             super(view);
-            textViewHotelName=(TextView) view.findViewById(R.id.textViewTourName);
-            textViewProvince=(TextView) view.findViewById(R.id.textViewProvince);
+            textViewHotelName=(TextView) view.findViewById(R.id.textViewHotelName);
+            textViewProvince=(TextView) view.findViewById(R.id.textViewProvinceHotel);
             textViewDiaChi=(TextView) view.findViewById(R.id.textViewDiaChiHotel);
             imageViewHotel=(ImageView) view.findViewById(R.id.imageViewHotel);
             view.setOnClickListener(new View.OnClickListener() {
@@ -112,30 +113,33 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Log.d("CustomAdapter", "Binding data to view holder at position " + position);
         switch (getItemViewType(position)){
             case VEHICLE:
-                VehicleViewHolder vehicleViewHolder=(VehicleViewHolder) holder;
-                vehicleViewHolder.txtLicense.setText(objectList.get(position).toString());
-                vehicleViewHolder.txtviewModel.setText(objectList.get(position).toString());
+                Vehicle vehicle = (Vehicle) objectList.get(position);
+                VehicleViewHolder vehicleViewHolder = (VehicleViewHolder) holder;
+                vehicleViewHolder.txtviewModel.setText(vehicle.getModel());
+                vehicleViewHolder.txtLicense.setText(vehicle.getLicensePlate());
                 //vehicleViewHolder.imageViewVehicle.setText(objectList.get(position).toString());
                 break;
             case HOTEL:
-                HotelViewHolder hotelViewHolder=(HotelViewHolder) holder;
-                hotelViewHolder.textViewHotelName.setText(objectList.get(position).toString());
-                hotelViewHolder.textViewDiaChi.setText(objectList.get(position).toString());
-                hotelViewHolder.textViewProvince.setText(objectList.get(position).toString());
-                hotelViewHolder.imageViewHotel.setImageResource((int)objectList.get(position));
-
+                Hotel hotel = (Hotel) objectList.get(position);
+                HotelViewHolder hotelViewHolder = (HotelViewHolder) holder;
+                hotelViewHolder.textViewHotelName.setText(hotel.getHotelName());
+                hotelViewHolder.textViewProvince.setText(hotel.getProvince());
+                hotelViewHolder.textViewDiaChi.setText(hotel.getHotelAddress());
+                //hotelViewHolder.imageViewHotel.setImageResource(objectList.get(position));
                 //vehicleViewHolder.imageViewVehicle.setText(objectList.get(position).toString());
                 break;
             case TOUR:
-                TourViewHolder tourViewHolder=(TourViewHolder) holder;
-                tourViewHolder.textViewTourName.setText(objectList.get(position).toString());
-                tourViewHolder.textViewPrice.setText(objectList.get(position).toString());
-                tourViewHolder.textViewNgayDi.setText(objectList.get(position).toString());
-                tourViewHolder.textViewNoiDi.setText(objectList.get(position).toString());
-                tourViewHolder.textViewSoNguoi.setText(objectList.get(position).toString());
-                tourViewHolder.imageViewTour.setImageResource((int)objectList.get(position));
+                Tour tour = (Tour) objectList.get(position);
+                TourViewHolder tourViewHolder = (TourViewHolder) holder;
+                tourViewHolder.textViewTourName.setText(tour.getTourName());
+                tourViewHolder.textViewNgayDi.setText(tour.getDateGo().toString());
+                tourViewHolder.textViewPrice.setText(tour.getPrice().toString());
+                tourViewHolder.textViewSoNguoi.setText(String.valueOf(tour.getNumPerson()));
+                tourViewHolder.textViewNoiDi.setText(tour.getPlaceGo());
+                //tourViewHolder.imageViewTour.setImageResource((int)objectList.get(position));
                 //vehicleViewHolder.imageViewVehicle.setText(objectList.get(position).toString());
                 break;
         }

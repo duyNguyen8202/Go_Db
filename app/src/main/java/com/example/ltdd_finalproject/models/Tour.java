@@ -1,9 +1,10 @@
 package com.example.ltdd_finalproject.models;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Tour {
+public class Tour implements Serializable {
     private String tourId;
     private String tourGuiderId;
     private String placeId;
