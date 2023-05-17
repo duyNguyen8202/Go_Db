@@ -17,9 +17,9 @@ import java.util.List;
 
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder>{
     private static final  String TAG="TourAdapter";
-    private List<Tour> tourList;
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
+    private final List<Tour> tourList;
+    private final Context mContext;
+    private final LayoutInflater mLayoutInflater;
     public TourAdapter(Context context, List<Tour> datas){
         mContext = context;
         tourList = datas;
@@ -64,9 +64,9 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
         }
         public void anhXa(){
             imageViewTour = itemView.findViewById(R.id.imageViewTour);
-            textViewTourName = itemView.findViewById(R.id.textViewTourName);
+            textViewTourName = itemView.findViewById(R.id.textName);
             textViewNgayDi = itemView.findViewById(R.id.textViewNgayDi);
-            textViewPrice = itemView.findViewById(R.id.textViewPrice);
+            textViewPrice = itemView.findViewById(R.id.textPrice);
             textViewSoNguoi = itemView.findViewById(R.id.textViewSoNguoi);
             textViewNoiDi = itemView.findViewById(R.id.textViewNoiDi);
         }

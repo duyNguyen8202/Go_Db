@@ -15,10 +15,10 @@ import java.util.List;
 
 public class HotelAdapter extends
         BaseAdapter {
-    private Context mContext;
+    private final Context mContext;
 
-    private int layout;
-    private List<Hotel> hotelList;
+    private final int layout;
+    private final List<Hotel> hotelList;
     public HotelAdapter(Context context, List<Hotel> data, int layout){
         this.mContext=context;
         this.hotelList=data;

@@ -15,11 +15,11 @@ import com.example.ltdd_finalproject.models.Vehicle;
 import java.util.List;
 
 public class VehicleAdapter extends BaseAdapter {
-    private Context mContext;
+    private final Context mContext;
 
-    private int layout;
+    private final int layout;
     private LayoutInflater mLayoutInflater;
-    private List<Vehicle> vehicleList;
+    private final List<Vehicle> vehicleList;
 
     public VehicleAdapter(Context context, List<Vehicle> datas, int layout){
         this.mContext=context;

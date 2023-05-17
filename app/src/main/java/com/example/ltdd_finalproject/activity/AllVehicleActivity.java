@@ -16,7 +16,7 @@ import java.util.List;
 public class AllVehicleActivity extends AppCompatActivity {
     private GridView gridView;
     private VehicleAdapter vehicleAdapter;
-    private List<Vehicle> vehicleArrayList = new ArrayList<>();
+    private final List<Vehicle> vehicleArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

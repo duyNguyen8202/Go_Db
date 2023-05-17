@@ -9,14 +9,14 @@ public class Tour {
     private String placeId;
     private String tourName;
     private String placeGo;
-    private LocalDate dateGo;
-    private LocalDate dateBack;
+    private String dateGo;
+    private String dateBack;
     private int numPerson;
     private BigDecimal price;
     private String imageLink;
     private boolean state;
 
-    public Tour(String tourId, String tourGuiderId, String placeId, String tourName, String placeGo, LocalDate dateGo, LocalDate dateBack, int numPerson, BigDecimal price, String imageLink, boolean state) {
+    public Tour(String tourId, String tourGuiderId, String placeId, String tourName, String placeGo, String dateGo, String dateBack, int numPerson, BigDecimal price, String imageLink, boolean state) {
         this.tourId = tourId;
         this.tourGuiderId = tourGuiderId;
         this.placeId = placeId;
@@ -70,19 +70,19 @@ public class Tour {
         this.placeGo = placeGo;
     }
 
-    public LocalDate getDateGo() {
+    public String getDateGo() {
         return dateGo;
     }
 
-    public void setDateGo(LocalDate dateGo) {
+    public void setDateGo(String dateGo) {
         this.dateGo = dateGo;
     }
 
-    public LocalDate getDateBack() {
+    public String getDateBack() {
         return dateBack;
     }
 
-    public void setDateBack(LocalDate dateBack) {
+    public void setDateBack(String dateBack) {
         this.dateBack = dateBack;
     }
 
