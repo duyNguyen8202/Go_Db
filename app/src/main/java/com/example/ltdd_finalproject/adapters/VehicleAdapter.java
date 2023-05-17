@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ltdd_finalproject.R;
+import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
 
@@ -52,6 +53,11 @@ public class VehicleAdapter extends BaseAdapter implements Filterable {
             return filteredList.size();
         }
         return 0;
+    }
+    public void setVehicleList(List<Vehicle> tourList) {
+        this.vehicleList = tourList;
+        this.filteredList = new ArrayList<>(tourList);
+        notifyDataSetChanged();
     }
 
     @Override

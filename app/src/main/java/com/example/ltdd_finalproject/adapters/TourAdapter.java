@@ -24,6 +24,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
     private OnItemClickListener mListener;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+
     public interface OnItemClickListener {
         void onItemClick(Tour tour);
     }
@@ -32,6 +33,11 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
+    }
+    public void setTourList(List<Tour> tourList) {
+        this.tourList = tourList;
+        this.filteredList = new ArrayList<>(tourList);
+        notifyDataSetChanged();
     }
     public TourAdapter(Context context, List<Tour> datas) {
         mContext = context;
