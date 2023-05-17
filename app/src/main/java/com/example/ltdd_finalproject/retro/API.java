@@ -1,6 +1,7 @@
 package com.example.ltdd_finalproject.retro;
 import com.example.ltdd_finalproject.models.Account;
 import com.example.ltdd_finalproject.models.LoginResponse;
+import com.example.ltdd_finalproject.models.ProfileResponse;
 import com.example.ltdd_finalproject.models.RegisterResponse;
 
 import java.sql.Date;
@@ -29,4 +30,8 @@ public interface API {
                                                 @Field("gender") boolean gender,
                                                 @Field("birth_day") String birth_day,
                                                 @Field("acc_password") String acc_password);
+    @FormUrlEncoded
+    @POST("admin/account?action=profile")
+    Call<ProfileResponse> getProfile (@Field("username") String username);
+
 }
