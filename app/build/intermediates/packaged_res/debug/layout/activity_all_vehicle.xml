@@ -7,7 +7,7 @@
     android:weightSum="10"
     tools:context=".activity.AllVehicleActivity">
 
-    <androidx.appcompat.widget.SearchView
+    <SearchView
         android:id="@+id/searchVehicle"
         android:layout_width="match_parent"
         android:layout_height="0dp"

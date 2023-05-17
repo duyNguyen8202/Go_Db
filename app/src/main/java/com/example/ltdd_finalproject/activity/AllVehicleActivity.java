@@ -13,6 +13,7 @@ import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.VehicleAdapter;
 import com.example.ltdd_finalproject.models.Vehicle;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,17 +45,17 @@ public class AllVehicleActivity extends AppCompatActivity {
                 return true;
             }
         });
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                // Get the selected vehicle item
-//                Vehicle vehicle = (Vehicle) adapterView.getItemAtPosition(i);
-//                // Pass the selected vehicle to a new activity to show its details
-//                Intent intent = new Intent(AllVehicleActivity.this, VehicleDetailActivity.class);
-//                intent.putExtra("vehicle", vehicle);
-//                startActivity(intent);
-//            }
-//        });
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // Get the selected vehicle item
+                Vehicle vehicle = (Vehicle) adapterView.getItemAtPosition(i);
+                // Pass the selected vehicle to a new activity to show its details
+                Intent intent = new Intent(AllVehicleActivity.this, VehicleDetailActivity.class);
+                intent.putExtra("vehicle", vehicle);
+                startActivity(intent);
+            }
+        });
     }
     protected  void themData()
     {
