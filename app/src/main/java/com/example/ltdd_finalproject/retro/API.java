@@ -2,7 +2,6 @@ package com.example.ltdd_finalproject.retro;
 import com.example.ltdd_finalproject.models.Account;
 import com.example.ltdd_finalproject.models.LoginResponse;
 import com.example.ltdd_finalproject.models.Tour;
-//import com.example.ltdd_finalproject.models.RegisterResponse;
 
 import java.sql.Date;
 import java.util.List;
@@ -32,10 +31,8 @@ public interface API {
 //                                                @Field("birth_day") Date birthday,
 //                                                @Field("password") String password);
 
-
     // Staff
     ///// Đầu tiên xem tour
     @GET("/admin/tours")
     Call<List<Tour>> getTours();
-
 }
