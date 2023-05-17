@@ -3346,6 +3346,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_logout
 id button
 id button2
 id button3
@@ -3447,6 +3448,7 @@ id car_ui_wideScreenErrorMessage
 id car_ui_wideScreenExtractedTextIcon
 id car_ui_wideScreenInputArea
 id car_ui_wideScreenSearchResultList
+id cardView
 id carryVelocity
 id center
 id centerCrop
@@ -3481,6 +3483,7 @@ id cradle
 id currentState
 id custom
 id customPanel
+id customerId
 id cut
 id date_picker_actions
 id decelerate
@@ -3586,6 +3589,7 @@ id imageView2
 id imageView3
 id imageView4
 id imageViewHotel
+id imageViewProfile
 id imageViewTour
 id imageViewVehicle
 id immediateStop
@@ -3848,13 +3852,14 @@ id textStart
 id textTop
 id textView
 id textView2
-id textView3
 id textView6
 id textView7
 id textView8
 id textView9
 id textViewDiaChi
 id textViewDiaChiHotel
+id textViewEmail
+id textViewGender
 id textViewHotelName
 id textViewNgayDi
 id textViewNoiDi
@@ -3863,6 +3868,10 @@ id textViewProvince
 id textViewProvinceHotel
 id textViewSoNguoi
 id textViewTourName
+id textViewaddress
+id textViewbirthDay
+id textViewfullName
+id textViewphoneNumber
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon

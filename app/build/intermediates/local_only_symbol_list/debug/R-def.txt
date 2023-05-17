@@ -16,6 +16,7 @@ drawable logo
 drawable profile
 id birthday_date_picker
 id bottomnavigation
+id btn_logout
 id button
 id button2
 id button3
@@ -25,6 +26,8 @@ id buttonHotel
 id buttonNext
 id buttonTous
 id buttonVehicle
+id cardView
+id customerId
 id editTextEmail
 id editTextPassword
 id editTextRePassword
@@ -45,6 +48,7 @@ id imageView2
 id imageView3
 id imageView4
 id imageViewHotel
+id imageViewProfile
 id imageViewTour
 id imageViewVehicle
 id listviewHotel
@@ -62,13 +66,14 @@ id searchTour
 id searchVehicle
 id textView
 id textView2
-id textView3
 id textView6
 id textView7
 id textView8
 id textView9
 id textViewDiaChi
 id textViewDiaChiHotel
+id textViewEmail
+id textViewGender
 id textViewHotelName
 id textViewNgayDi
 id textViewNoiDi
@@ -77,6 +82,10 @@ id textViewProvince
 id textViewProvinceHotel
 id textViewSoNguoi
 id textViewTourName
+id textViewaddress
+id textViewbirthDay
+id textViewfullName
+id textViewphoneNumber
 id txtLicense
 id txtviewModel
 id usernameEdit

@@ -2,7 +2,10 @@ package com.example.ltdd_finalproject.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
 
@@ -41,6 +44,17 @@ public class AllVehicleActivity extends AppCompatActivity {
                 return true;
             }
         });
+//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                // Get the selected vehicle item
+//                Vehicle vehicle = (Vehicle) adapterView.getItemAtPosition(i);
+//                // Pass the selected vehicle to a new activity to show its details
+//                Intent intent = new Intent(AllVehicleActivity.this, VehicleDetailActivity.class);
+//                intent.putExtra("vehicle", vehicle);
+//                startActivity(intent);
+//            }
+//        });
     }
     protected  void themData()
     {
