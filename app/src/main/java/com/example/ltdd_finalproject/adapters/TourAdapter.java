@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Tour;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,18 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
     private static final String TAG = "TourAdapter";
     private List<Tour> tourList;
     private List<Tour> filteredList;
+    private OnItemClickListener mListener;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    public interface OnItemClickListener {
+        void onItemClick(Tour tour);
+    }
 
+    // Constructor and other methods
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
     public TourAdapter(Context context, List<Tour> datas) {
         mContext = context;
         tourList = datas;
@@ -75,13 +85,25 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
         return filteredList.size();
     }
 
-    public class TourViewHolder extends RecyclerView.ViewHolder {
+    public class TourViewHolder extends RecyclerView.ViewHolder implements Serializable {
         private ImageView imageViewTour;
         private TextView textViewTourName, textViewNgayDi, textViewPrice, textViewSoNguoi, textViewNoiDi;
 
         public TourViewHolder(@NonNull View itemView) {
             super(itemView);
             anhXa();
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getBindingAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            // Call onItemClick() method of the interface with the clicked tour object
+                            mListener.onItemClick(tourList.get(position));
+                        }
+                    }
+                }
+            });
         }
 
         public void anhXa() {

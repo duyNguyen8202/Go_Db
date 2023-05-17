@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:weightSum="10">
 
-        <androidx.appcompat.widget.SearchView
+        <SearchView
             android:id="@+id/searchTour"
             android:layout_width="match_parent"
             android:layout_height="0dp"

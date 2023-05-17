@@ -27,8 +27,13 @@
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
         android:extractNativeLibs="false"
-        android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <activity
+            android:name="com.example.ltdd_finalproject.activity.TourDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ltdd_finalproject.activity.HotelDetailActivity"
+            android:exported="false" />
         <activity
             android:name="com.example.ltdd_finalproject.activity.VehicleDetailActivity"
             android:exported="false" />

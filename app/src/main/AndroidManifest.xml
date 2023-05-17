@@ -9,6 +9,12 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="ExtraText">
         <activity
+            android:name=".activity.TourDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.HotelDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.VehicleDetailActivity"
             android:exported="false" />
         <activity
