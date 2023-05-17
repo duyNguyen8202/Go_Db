@@ -40,6 +40,16 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.TourDetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.HotelDetailActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".activity.VehicleDetailActivity"
+            android:exported="false"/>
+
+        <activity
             android:name=".activity.IntroActivity"
             android:exported="true">
             <intent-filter>
