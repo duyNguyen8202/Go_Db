@@ -21,12 +21,12 @@ public interface API {
         @FormUrlEncoded
         @POST("admin/account?action=signupcustomer")
         Call<RegisterResponse> registerCustomer(@Field("username") String username,
-                                                @Field("full_name") String fullname,
+                                                @Field("full_name") String full_name,
                                                 @Field("email") String email,
-                                                @Field("phone_number") String phonenumber,
-                                                @Field("image_link") String image,
+                                                @Field("phone_number") String phone_number,
+                                                @Field("image_link") String image_link,
                                                 @Field("address") String address,
                                                 @Field("gender") boolean gender,
-                                                @Field("birth_day") Date birthday,
-                                                @Field("password") String password);
+                                                @Field("birth_day") String birth_day,
+                                                @Field("acc_password") String acc_password);
 }

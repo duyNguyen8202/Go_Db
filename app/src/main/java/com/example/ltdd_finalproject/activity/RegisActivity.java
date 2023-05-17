@@ -24,13 +24,21 @@ public class RegisActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String username = editTextUsername.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
+                String rePassword = editTextRePassword.getText().toString().trim();
+                if (!password.equals(rePassword)) {
+                    editTextRePassword.setError("Mật khẩu không trùng khớp");
+                    return;
+                }
                 Intent intent = new Intent(RegisActivity.this, RegistInfoActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
                 startActivity(intent);
             }
         });
     }
     protected void anhXa(){
-
         buttonNext = (Button) findViewById(R.id.buttonNext);
         editTextUsername = (EditText) findViewById(R.id.editTextUsername);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
