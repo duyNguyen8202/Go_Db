@@ -1,5 +1,7 @@
 package com.example.ltdd_finalproject.adapters;
 
+import android.app.Activity;
+import android.app.Notification;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Tour;
 
@@ -19,11 +23,13 @@ import java.util.List;
 
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder> {
     private static final String TAG = "TourAdapter";
+    Activity activity;
     private List<Tour> tourList;
     private List<Tour> filteredList;
     private OnItemClickListener mListener;
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
+    private final Context mContext;
+    private final LayoutInflater mLayoutInflater;
+
     public interface OnItemClickListener {
         void onItemClick(Tour tour);
     }
@@ -33,11 +39,17 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
+    public void setTourList(List<Tour> tourList) {
+        this.tourList = tourList;
+        this.filteredList = new ArrayList<>(tourList);
+        notifyDataSetChanged();
+    }
     public TourAdapter(Context context, List<Tour> datas) {
         mContext = context;
         tourList = datas;
         filteredList = new ArrayList<>(datas);
         mLayoutInflater = LayoutInflater.from(context);
+        this.activity = (Activity) context;
     }
 
     @NonNull
@@ -72,7 +84,13 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
         if (tour == null) {
             return;
         }
-        //holder.imageViewTour.setImageResource(tour.getImageLink());
+
+
+        Glide.with(activity)
+                .load(tourList.get(position).getImageLink())
+                .apply(new RequestOptions().override(250, 250))
+                .into(holder.imageViewTour);
+
         holder.textViewNgayDi.setText(String.valueOf(tour.getDateGo()));
         holder.textViewPrice.setText(String.valueOf(tour.getPrice()));
         holder.textViewNoiDi.setText(String.valueOf(tour.getPlaceGo()));

@@ -12,7 +12,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class RegisterAdapter {
-    private API myAPI;
+    private final API myAPI;
 
     public RegisterAdapter() {
         Retrofit retrofit = RetrofitClient.getRetrofitRegister();

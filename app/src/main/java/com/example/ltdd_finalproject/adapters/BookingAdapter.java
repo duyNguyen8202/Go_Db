@@ -18,8 +18,8 @@ import java.util.List;
 import java.util.Locale;
 
 public class BookingAdapter extends ArrayAdapter<Booking>{
-    private Context context;
-    private List<Booking> bookings;
+    private final Context context;
+    private final List<Booking> bookings;
 
     public BookingAdapter(Context context, List<Booking> bookings) {
         super(context, 0, bookings);

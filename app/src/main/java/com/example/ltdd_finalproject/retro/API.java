@@ -1,5 +1,13 @@
 package com.example.ltdd_finalproject.retro;
 import com.example.ltdd_finalproject.models.Account;
+import com.example.ltdd_finalproject.models.Hotel;
+import com.example.ltdd_finalproject.models.LoginResponse;
+import com.example.ltdd_finalproject.models.Place;
+import com.example.ltdd_finalproject.models.ProfileResponse;
+import com.example.ltdd_finalproject.models.RegisterResponse;
+import com.example.ltdd_finalproject.models.Room;
+import com.example.ltdd_finalproject.models.Tour;
+import com.example.ltdd_finalproject.models.Vehicle;
 import com.example.ltdd_finalproject.models.Booking;
 import com.example.ltdd_finalproject.models.LoginResponse;
 import com.example.ltdd_finalproject.models.ProfileResponse;
@@ -19,8 +27,6 @@ public interface API {
     @POST("admin/account?action=login")
     Call<LoginResponse> login(@Field("username") String username,
                               @Field("password") String password);
-//    @GET("items")
-//    Call<List<>> getItems();
         @FormUrlEncoded
         @POST("admin/account?action=signupcustomer")
         Call<RegisterResponse> registerCustomer(@Field("username") String username,
@@ -38,4 +44,25 @@ public interface API {
     @GET("admin/booking")
     Call<List<Booking>> getBooking();
 
+
+    // Staff
+    ///// Đầu tiên xem tour
+    @GET("admin/tours")
+    Call<List<Tour>> getTours();
+
+    ///// Xem Hotel
+    @GET("admin/hotel")
+    Call<List<Hotel>> getHotels();
+
+    ///// Xem Hotel
+    @GET("admin/rooms")
+    Call<List<Room>> getRooms();
+
+    ///// Xem Hotel
+    @GET("admin/vehicles")
+    Call<List<Vehicle>> getVehicles();
+
+    ///// Xem Hotel
+    @GET("admin/places")
+    Call<List<Place>> getPlaces();
 }

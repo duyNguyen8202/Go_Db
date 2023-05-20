@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -12,24 +13,28 @@ import android.widget.SearchView;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.VehicleAdapter;
 import com.example.ltdd_finalproject.models.Vehicle;
+import com.example.ltdd_finalproject.retro.API;
+import com.example.ltdd_finalproject.retro.RetrofitClient;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AllVehicleActivity extends AppCompatActivity {
     private GridView gridView;
     private VehicleAdapter vehicleAdapter;
-    private List<Vehicle> vehicleArrayList = new ArrayList<>();
+    private List<Vehicle> vehicleList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_vehicle);
         SearchView searchView = findViewById(R.id.searchVehicle);
-        gridView = (GridView) findViewById(R.id.gridview);
+        gridView = findViewById(R.id.gridview);
         themData();
-        vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this,vehicleArrayList, R.layout.vehicle_item );
+        vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this, vehicleList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -59,10 +64,23 @@ public class AllVehicleActivity extends AppCompatActivity {
     }
     protected  void themData()
     {
-        vehicleArrayList.add(new Vehicle("V01", "CTY01","HONDA-RS","RED-BLACK","89-B3-20113",new BigDecimal("250.00"),true));
-        vehicleArrayList.add(new Vehicle("V02", "CTY01","HONDA-RS","WHITE-BLACK","89-B3-82613",new BigDecimal("150.00"),false));
-        vehicleArrayList.add(new Vehicle("V03", "CTY02","YAMAHA-JANUS","RED-WHITE","22-B1-77113",new BigDecimal("3222.00"),true));
-        vehicleArrayList.add(new Vehicle("V04", "CTY03","VINF","RED","23-H1-223312",new BigDecimal("9250.00"),true));
+        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        Call<List<Vehicle>> call = apiService.getVehicles();
+        call.enqueue(new Callback<List<Vehicle>>() {
+            @Override
+            public void onResponse(Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
+                vehicleList = response.body();
+                vehicleAdapter.setVehicleList(vehicleList);
 
+                for (int i = 0; i < vehicleList.size(); i++) {
+                    Log.d("retrofit_suc", vehicleList.get(i).getModel());
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Vehicle>> call, Throwable t) {
+                // Xử lý lỗi
+                Log.d("retrofit_error", t.toString());
+            }
+        });
     }
 }

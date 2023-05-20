@@ -10,6 +10,12 @@ public class LoginResponse {
 
     private String username;
 
+    public String getUsername() {
+        return username;
+    }
+
+    private String username;
+
     public boolean isSuccess() {
         return success;
     }
