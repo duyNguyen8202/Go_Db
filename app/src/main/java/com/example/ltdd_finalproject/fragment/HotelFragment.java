@@ -36,7 +36,7 @@ public class HotelFragment extends Fragment {
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        hotelAdapter = new sHotelAdapter();
+        hotelAdapter = new sHotelAdapter(getActivity());
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());

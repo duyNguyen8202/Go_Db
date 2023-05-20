@@ -32,7 +32,7 @@ public class AllVehicleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_vehicle);
         SearchView searchView = findViewById(R.id.searchVehicle);
-        gridView = (GridView) findViewById(R.id.gridview);
+        gridView = findViewById(R.id.gridview);
         themData();
         vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this, vehicleList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);

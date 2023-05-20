@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters.staffAdapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Hotel;
 
@@ -17,7 +20,11 @@ import java.util.List;
 public class sHotelAdapter extends RecyclerView.Adapter<sHotelAdapter.ViewHolder> {
 
     private List<Hotel> hotelList;
+    Activity activity;
 
+    public sHotelAdapter(Activity activity) {
+        this.activity = activity;
+    }
     public void setTourList(List<Hotel> tourList) {
         this.hotelList = tourList;
         notifyDataSetChanged();
@@ -32,7 +39,12 @@ public class sHotelAdapter extends RecyclerView.Adapter<sHotelAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Hotel hotel = hotelList.get(position);
-//        holder.imageViewTour.setImageResource(tour.getImageLink());
+
+        Glide.with(activity)
+                .load(hotelList.get(position).getImageLink())
+                .apply(new RequestOptions().override(250, 250))
+                .into(holder.image);
+
         holder.textName.setText(String.valueOf(hotel.getHotelName()));
         holder.textPrice.setText(String.valueOf(hotel.getProvince()));
 

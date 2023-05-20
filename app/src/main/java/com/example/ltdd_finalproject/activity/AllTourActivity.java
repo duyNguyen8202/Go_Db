@@ -55,6 +55,7 @@ public class AllTourActivity extends AppCompatActivity {
                 return false;
             }
 
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 // Filter the data set based on the search query

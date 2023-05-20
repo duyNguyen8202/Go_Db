@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters.staffAdapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Tour;
 
@@ -17,6 +20,10 @@ import java.util.List;
 public class sTourAdapter extends RecyclerView.Adapter<sTourAdapter.ViewHolder> {
 
     private List<Tour> tourList;
+    Activity activity;
+    public sTourAdapter(Activity activity) {
+        this.activity = activity;
+    }
 
     public void setTourList(List<Tour> tourList) {
         this.tourList = tourList;
@@ -32,7 +39,12 @@ public class sTourAdapter extends RecyclerView.Adapter<sTourAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Tour tour = tourList.get(position);
-//        holder.imageViewTour.setImageResource(tour.getImageLink());
+
+        Glide.with(activity)
+                .load(tourList.get(position).getImageLink())
+                .apply(new RequestOptions().override(250, 250))
+                .into(holder.imageViewTour);
+
         holder.textViewTourName.setText(String.valueOf(tour.getTourName()));
         holder.textPrice.setText(String.valueOf(tour.getPrice()));
     }

@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
+import android.widget.Toast;
 import android.widget.Button;
 
 import com.example.ltdd_finalproject.R;
@@ -18,17 +16,20 @@ import com.example.ltdd_finalproject.databinding.ActivityMain2Binding;
 import com.example.ltdd_finalproject.fragment.BookingFragment;
 import com.example.ltdd_finalproject.fragment.HomeFragment;
 import com.example.ltdd_finalproject.fragment.ProfileFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.ltdd_finalproject.models.Customer;
+import com.example.ltdd_finalproject.adapters.ProfileAdapter;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ProfileAdapter.ProfileCallback {
     ActivityMain2Binding binding;
-    Button allTourBtn,buttonHotel;
+    Button allTourBtn, buttonHotel;
     Button allVehicleBtn;
+    Customer customer;
+    private ProfileAdapter profileAdapter;
 
-    private void replaceFragment(Fragment fragment){
+    private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout,fragment);
+        fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
 
@@ -37,19 +38,34 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        String username = getIntent().getStringExtra("username");
+
+        Log.d("username", username);
+
         binding = ActivityMain2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        profileAdapter = new ProfileAdapter(); // Initialize the profileAdapter object
+        getProfile(username);
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("customer", customer);
 
         binding.bottomnavigation.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    replaceFragment(new HomeFragment());
+                    HomeFragment homefragment = new HomeFragment();
+                    homefragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, homefragment).commit();
                     break;
                 case R.id.navigation_profile:
-                    replaceFragment(new ProfileFragment());
+                    ProfileFragment profilefragment= new ProfileFragment();
+                    profilefragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profilefragment).commit();
                     break;
                 case R.id.navigation_booking:
-                    replaceFragment(new BookingFragment());
+                    BookingFragment bookingfragment = new BookingFragment();
+                    bookingfragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, bookingfragment).commit();
                     break;
             }
             return true;
@@ -62,39 +78,34 @@ public class HomeActivity extends AppCompatActivity {
             fragment.setArguments(intent.getExtras());
             replaceFragment(fragment);
         }
-// Connect the NavController to the BottomNavigationView
-        //anhXa();
-        //setEvent();
     }
-//    protected void anhXa(){
-//
-//        allTourBtn=(Button) findViewById(R.id.buttonTous);
-//        allVehicleBtn=(Button) findViewById(R.id.buttonVehicle);
-//        buttonHotel=(Button) findViewById(R.id.buttonHotel);
-//    }
-//    protected  void setEvent(){
-//        //Event for Tours
-//        allTourBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(HomeActivity.this, AllTourActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        allVehicleBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(HomeActivity.this, AllVehicleActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        buttonHotel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(HomeActivity.this, AllHotelActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//    }
+
+    private void getProfile(String username) {
+        profileAdapter.profile(username, this);
+        Log.d("getProfile", "Customer object is null");
+    }
+
+    @Override
+    public void onProfileSuccess(String message, String customerId, String fullName, String email,
+                                 String phoneNumber, String imageLink, String address, boolean gender, String birthDay) {
+        customer = new Customer(customerId, fullName, email, phoneNumber, imageLink, address, gender, birthDay);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("customer", customer);
+
+        // create a new instance of the ProfileFragment
+        //ProfileFragment profileFragment = new ProfileFragment();
+
+        // set the arguments of the ProfileFragment to the Bundle
+        //profileFragment.setArguments(bundle);
+
+        // replace the current fragment with the ProfileFragment
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profileFragment).commit();
+        Log.d("onProfileSuccess", "Customer object is null");
+    }
+
+    @Override
+    public void onProfileFailure(String error) {
+        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        Log.d("onProfileFailure", "Customer object is null");
+    }
 }

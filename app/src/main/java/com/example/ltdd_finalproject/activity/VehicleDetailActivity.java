@@ -19,12 +19,12 @@ public class VehicleDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Vehicle vehicle = (Vehicle) intent.getSerializableExtra("vehicle");
 
-        txtvehicleId= (TextView) findViewById(R.id.txtvehicleId);
-        textRentalCompany= (TextView) findViewById(R.id.textRentalCompany);
-        textViewmodel= (TextView) findViewById(R.id.textViewmodel);
-        textViewColor= (TextView) findViewById(R.id.textViewColor);
-        textViewLicensePlate= (TextView) findViewById(R.id.textViewLicensePlate);
-        textViewrentalRate= (TextView) findViewById(R.id.textViewrentalRate);
+        txtvehicleId= findViewById(R.id.txtvehicleId);
+        textRentalCompany= findViewById(R.id.textRentalCompany);
+        textViewmodel= findViewById(R.id.textViewmodel);
+        textViewColor= findViewById(R.id.textViewColor);
+        textViewLicensePlate= findViewById(R.id.textViewLicensePlate);
+        textViewrentalRate= findViewById(R.id.textViewrentalRate);
         //textViewphoneavailable= (TextView) findViewById(R.id.textViewphoneavailable);
 
 

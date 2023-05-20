@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters.staffAdapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Room;
 
 import java.util.List;
 
 public class sRoomAdapter extends RecyclerView.Adapter<sRoomAdapter.ViewHolder> {
 
-    private List<Room> tourHotel;
+    Activity activity;
+    private List<Room> roomList;
+
 
     public void setTourList(List<Room> tourList) {
-        this.tourHotel = tourList;
+        this.roomList = tourList;
         notifyDataSetChanged();
     }
 
@@ -32,15 +35,15 @@ public class sRoomAdapter extends RecyclerView.Adapter<sRoomAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Room room = tourHotel.get(position);
-//        holder.imageViewTour.setImageResource(tour.getImageLink());
+        Room room = roomList.get(position);
+
         holder.textName.setText(String.valueOf(room.getRoomId()));
         holder.textPrice.setText(String.valueOf(room.getRentalRate()));
     }
 
     @Override
     public int getItemCount() {
-        return tourHotel == null ? 0 : tourHotel.size();
+        return roomList == null ? 0 : roomList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

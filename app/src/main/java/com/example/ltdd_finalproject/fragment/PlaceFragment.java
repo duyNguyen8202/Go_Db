@@ -38,7 +38,7 @@ public class PlaceFragment extends Fragment {
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        placeAdapter = new sPlaceAdapter();
+        placeAdapter = new sPlaceAdapter(getActivity());
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());

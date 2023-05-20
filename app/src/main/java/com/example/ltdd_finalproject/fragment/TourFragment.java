@@ -39,7 +39,7 @@ public class TourFragment extends Fragment {
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        tourAdapter = new sTourAdapter();
+        tourAdapter = new sTourAdapter(getActivity());
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());

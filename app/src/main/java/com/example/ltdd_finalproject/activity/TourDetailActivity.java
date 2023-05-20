@@ -28,15 +28,15 @@ public class TourDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Tour tour = (Tour) intent.getSerializableExtra("tour");
         btnBookNow = findViewById(R.id.btnBookTour);
-        txttourId= (TextView) findViewById(R.id.txttourId);
-        texttourGuiderId= (TextView) findViewById(R.id.texttourGuiderId);
-        textplaceId= (TextView) findViewById(R.id.textplaceId);
-        textViewtourName= (TextView) findViewById(R.id.textViewtourName);
-        textViewplaceGo= (TextView) findViewById(R.id.textViewplaceGo);
-        textViewdateGo= (TextView) findViewById(R.id.textViewdateGo);
-        textViewdateBack= (TextView) findViewById(R.id.textViewdateBack);
-        textViewnumPerson= (TextView) findViewById(R.id.textViewnumPerson);
-        textViewprice= (TextView) findViewById(R.id.textViewprice);
+        txttourId= findViewById(R.id.txttourId);
+        texttourGuiderId= findViewById(R.id.texttourGuiderId);
+        textplaceId= findViewById(R.id.textplaceId);
+        textViewtourName= findViewById(R.id.textViewtourName);
+        textViewplaceGo= findViewById(R.id.textViewplaceGo);
+        textViewdateGo= findViewById(R.id.textViewdateGo);
+        textViewdateBack= findViewById(R.id.textViewdateBack);
+        textViewnumPerson= findViewById(R.id.textViewnumPerson);
+        textViewprice= findViewById(R.id.textViewprice);
 
         txttourId.setText(tour.getTourId());
         texttourGuiderId.setText(tour.getTourGuiderId());

@@ -29,6 +29,6 @@ public class IntroActivity extends AppCompatActivity {
         });
     }
     protected void anhXa(){
-        button = (Button) findViewById(R.id.goButton);
+        button = findViewById(R.id.goButton);
     }
 }

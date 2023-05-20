@@ -35,7 +35,7 @@ public class AllHotelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_hotel);
         SearchView searchView = findViewById(R.id.searchHotel);
-        listView = (ListView) findViewById(R.id.listviewHotel);
+        listView = findViewById(R.id.listviewHotel);
         hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item1);
         listView.setAdapter(hotelAdapter);
         themData();

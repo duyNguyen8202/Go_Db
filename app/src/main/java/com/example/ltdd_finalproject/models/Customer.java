@@ -1,8 +1,9 @@
 package com.example.ltdd_finalproject.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Customer {
+public class Customer implements Serializable {
     private String customerId;
     private String fullName;
     private String email;
@@ -10,9 +11,9 @@ public class Customer {
     private String imageLink;
     private String address;
     private boolean gender;
-    private Date birthDay;
+    private String birthDay;
 
-    public Customer(String customerId, String fullName, String email, String phoneNumber, String imageLink, String address, boolean gender, Date birthDay) {
+    public Customer(String customerId, String fullName, String email, String phoneNumber, String imageLink, String address, boolean gender, String birthDay) {
         this.customerId = customerId;
         this.fullName = fullName;
         this.email = email;
@@ -79,11 +80,11 @@ public class Customer {
         this.gender = gender;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 }
