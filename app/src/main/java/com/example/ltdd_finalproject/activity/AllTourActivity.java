@@ -32,6 +32,7 @@ import retrofit2.Response;
 public class AllTourActivity extends AppCompatActivity {
     Button allTourBtn;
     private RecyclerView recyclerView;
+    String data = new String();
     private TourAdapter mTourAdapter;
     private List<Tour> mTours = new ArrayList<>();
 
@@ -47,7 +48,8 @@ public class AllTourActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         themData ();
-
+        data = getIntent().getStringExtra("customerid");
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -70,7 +72,7 @@ public class AllTourActivity extends AppCompatActivity {
                 Intent intent = new Intent(AllTourActivity.this, TourDetailActivity.class);
                 // Pass the selected tour object to the detail activity
                 intent.putExtra("tour", tour);
-
+                intent.putExtra("customerid", data);
                 // Start the detail activity
                 startActivity(intent);
             }

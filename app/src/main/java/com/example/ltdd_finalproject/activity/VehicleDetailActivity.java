@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Vehicle;
 
 public class VehicleDetailActivity extends AppCompatActivity {
     TextView txtvehicleId,textRentalCompany,textViewmodel,textViewColor,textViewLicensePlate,textViewrentalRate,textViewphoneavailable;
+    String customerid = new String();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,11 @@ public class VehicleDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Vehicle vehicle = (Vehicle) intent.getSerializableExtra("vehicle");
-
+        customerid = getIntent().getStringExtra("customerid");
+        if(customerid !=null)
+        {
+            Toast.makeText(this, "ID:"+customerid, Toast.LENGTH_SHORT).show();
+        }
         txtvehicleId= findViewById(R.id.txtvehicleId);
         textRentalCompany= findViewById(R.id.textRentalCompany);
         textViewmodel= findViewById(R.id.textViewmodel);

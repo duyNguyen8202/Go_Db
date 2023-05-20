@@ -47,25 +47,22 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
         profileAdapter = new ProfileAdapter(); // Initialize the profileAdapter object
         getProfile(username);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("customer", customer);
-
         binding.bottomnavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     HomeFragment homefragment = new HomeFragment();
-                    homefragment.setArguments(bundle);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, homefragment).commit();
+                    //homefragment.setArguments(bundle);
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, homefragment).commit();
                     break;
                 case R.id.navigation_profile:
                     ProfileFragment profilefragment= new ProfileFragment();
-                    profilefragment.setArguments(bundle);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profilefragment).commit();
+                    //profilefragment.setArguments(bundle);
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profilefragment).commit();
                     break;
                 case R.id.navigation_booking:
                     BookingFragment bookingfragment = new BookingFragment();
-                    bookingfragment.setArguments(bundle);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, bookingfragment).commit();
+                    //bookingfragment.setArguments(bundle);
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, bookingfragment).commit();
                     break;
             }
             return true;
@@ -92,14 +89,36 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
         Bundle bundle = new Bundle();
         bundle.putSerializable("customer", customer);
 
-        // create a new instance of the ProfileFragment
-        //ProfileFragment profileFragment = new ProfileFragment();
+         //create a new instance of the ProfileFragment
+//        ProfileFragment profileFragment = new ProfileFragment();
+//
+//        // set the arguments of the ProfileFragment to the Bundle
+//        profileFragment.setArguments(bundle);
+//
+//         //replace the current fragment with the ProfileFragment
+//        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profileFragment).commit();
 
-        // set the arguments of the ProfileFragment to the Bundle
-        //profileFragment.setArguments(bundle);
 
-        // replace the current fragment with the ProfileFragment
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profileFragment).commit();
+        binding.bottomnavigation.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    HomeFragment homefragment = new HomeFragment();
+                    homefragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, homefragment).commit();
+                    break;
+                case R.id.navigation_profile:
+                    ProfileFragment profilefragment= new ProfileFragment();
+                    profilefragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profilefragment).commit();
+                    break;
+                case R.id.navigation_booking:
+                    BookingFragment bookingfragment = new BookingFragment();
+                    bookingfragment.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, bookingfragment).commit();
+                    break;
+            }
+            return true;
+        });
         Log.d("onProfileSuccess", "Customer object is null");
     }
 

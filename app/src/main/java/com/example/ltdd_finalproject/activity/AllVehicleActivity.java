@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.VehicleAdapter;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 
 public class AllVehicleActivity extends AppCompatActivity {
     private GridView gridView;
+    String data = new String();
     private VehicleAdapter vehicleAdapter;
     private List<Vehicle> vehicleList = new ArrayList<>();
     @Override
@@ -36,6 +38,9 @@ public class AllVehicleActivity extends AppCompatActivity {
         themData();
         vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this, vehicleList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);
+
+        data = getIntent().getStringExtra("customerid");
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -58,6 +63,7 @@ public class AllVehicleActivity extends AppCompatActivity {
                 // Pass the selected vehicle to a new activity to show its details
                 Intent intent = new Intent(AllVehicleActivity.this, VehicleDetailActivity.class);
                 intent.putExtra("vehicle", vehicle);
+                intent.putExtra("customerid", data);
                 startActivity(intent);
             }
         });

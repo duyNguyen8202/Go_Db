@@ -18,6 +18,7 @@ import com.example.ltdd_finalproject.models.Tour;
 public class TourDetailActivity extends AppCompatActivity {
     TextView txttourId,texttourGuiderId,textplaceId,textViewtourName,textViewplaceGo,textViewdateGo,textViewdateBack,textViewnumPerson,textViewprice;
     Button btnBookNow;
+    String customerid = new String();
     private void themData(){
 
     }
@@ -27,6 +28,11 @@ public class TourDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tour_detail);
         Intent intent = getIntent();
         Tour tour = (Tour) intent.getSerializableExtra("tour");
+        customerid = getIntent().getStringExtra("customerid");
+        if(customerid !=null)
+        {
+            Toast.makeText(this, "ID:"+customerid, Toast.LENGTH_SHORT).show();
+        }
         btnBookNow = findViewById(R.id.btnBookTour);
         txttourId= findViewById(R.id.txttourId);
         texttourGuiderId= findViewById(R.id.texttourGuiderId);

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.example.ltdd_finalproject.adapters.CustomAdapter;
 import com.example.ltdd_finalproject.adapters.HotelAdapter;
 import com.example.ltdd_finalproject.adapters.TourAdapter;
 import com.example.ltdd_finalproject.adapters.VehicleAdapter;
+import com.example.ltdd_finalproject.models.Customer;
 import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
@@ -38,10 +40,12 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     private List<Object> mdata;
     RecyclerView recyclerView;
+    Customer customer;
     //////////
     private List<Hotel> hotelList = new ArrayList<>();
     private List<Tour> tourList = new ArrayList<>();
     private List<Vehicle> vehicleList = new ArrayList<>();
+    Bundle bundle= new Bundle();
 
     ///////////
     private static final String ARG_PARAM1 = "param1";
@@ -84,6 +88,19 @@ public class HomeFragment extends Fragment {
         CustomAdapter customAdapter = new CustomAdapter(getContext(), mdata);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        bundle = getArguments();
+        if (bundle != null) {
+            // retrieve the Customer object from the Bundle
+            customer = (Customer) bundle.getSerializable("customer");
+
+            if (customer != null) {
+                // do something with the Customer object
+                Toast.makeText(getContext(), "Customer object is exist", Toast.LENGTH_SHORT).show();
+            } else {
+                // handle the case where the customer object is null
+                Toast.makeText(getContext(), "Customer object is null", Toast.LENGTH_SHORT).show();
+            }
+        }
         return view;
     }
 
@@ -153,6 +170,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AllTourActivity.class);
+                intent.putExtra("customerid", customer.getCustomerId());
                 startActivity(intent);
             }
         });
@@ -160,6 +178,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AllVehicleActivity.class);
+                intent.putExtra("customerid", customer.getCustomerId());
                 startActivity(intent);
             }
         });
@@ -167,6 +186,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AllHotelActivity.class);
+                intent.putExtra("customerid", customer.getCustomerId());
                 startActivity(intent);
             }
         });

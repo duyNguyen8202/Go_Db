@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.HotelAdapter;
@@ -27,6 +28,7 @@ import retrofit2.Response;
 public class AllHotelActivity extends AppCompatActivity {
     private ListView listView;
     private HotelAdapter hotelAdapter;
+    String data = new String();
     private List<Hotel> hotelList = new ArrayList<>();
 
 
@@ -38,6 +40,8 @@ public class AllHotelActivity extends AppCompatActivity {
         listView = findViewById(R.id.listviewHotel);
         hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item1);
         listView.setAdapter(hotelAdapter);
+        data = getIntent().getStringExtra("customerid");
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
         themData();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -62,6 +66,7 @@ public class AllHotelActivity extends AppCompatActivity {
                 // Pass the selected vehicle to a new activity to show its details
                 Intent intent = new Intent(AllHotelActivity.this, HotelDetailActivity.class);
                 intent.putExtra("hotel", hotel);
+                intent.putExtra("customerid", data);
                 startActivity(intent);
             }
         });
