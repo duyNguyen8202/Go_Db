@@ -10,18 +10,7 @@ public class RetrofitClient {
     private static Retrofit retrofit;
     private static final String BASE_URL = "http://192.168.1.3:8080/API_GODB/";
 
-    public static Retrofit getRetrofitLogin() {
-        Gson gson = new GsonBuilder().setLenient().create();
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-        }
-        return retrofit;
-
-    }
-    public static Retrofit getRetrofitRegister() {
+    public static Retrofit getRetrofit() {
         Gson gson = new GsonBuilder().setLenient().create();
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()

@@ -15,7 +15,7 @@ public class RegisterAdapter {
     private final API myAPI;
 
     public RegisterAdapter() {
-        Retrofit retrofit = RetrofitClient.getRetrofitRegister();
+        Retrofit retrofit = RetrofitClient.getRetrofit();
         myAPI = retrofit.create(API.class);
     }
     public void registerCustomer(String username, String full_name, String email, String phone_number, String image_link,

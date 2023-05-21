@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotelAdapter extends BaseAdapter {
-    private Activity activity;
+    private final Activity activity;
     private final Context mContext;
     private List<Hotel> filteredList;
     private final int layout;

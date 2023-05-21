@@ -1,7 +1,6 @@
 package com.example.ltdd_finalproject.adapters;
 
 import com.example.ltdd_finalproject.models.Customer;
-import com.example.ltdd_finalproject.models.LoginResponse;
 import com.example.ltdd_finalproject.models.ProfileResponse;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
@@ -16,7 +15,7 @@ public class ProfileAdapter {
     Customer customer;
 
     public ProfileAdapter() {
-        Retrofit retrofit = RetrofitClient.getRetrofitLogin();
+        Retrofit retrofit = RetrofitClient.getRetrofit();
         myAPI = retrofit.create(API.class);
     }
 
@@ -36,6 +35,10 @@ public class ProfileAdapter {
                         callback.onProfileSuccess(profileResponse.getMessage(), profileResponse.getCustomer_id(),profileResponse.getFull_name(),
                                 profileResponse.getEmail(),profileResponse.getPhone_number(),profileResponse.getImage_link(),profileResponse.getAddress()
                                 , profileResponse.isGender(),profileResponse.getBirthday());
+
+                        customer = new Customer(profileResponse.getCustomer_id(),profileResponse.getFull_name(),
+                                profileResponse.getEmail(),profileResponse.getPhone_number(),profileResponse.getImage_link(),profileResponse.getAddress()
+                                ,Boolean.valueOf(profileResponse.isGender()),profileResponse.getBirthday());
 
                     } else {
                         callback.onProfileFailure("Lấy thông tin tài khoản không thành công.");

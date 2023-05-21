@@ -29,13 +29,14 @@ public class AllHotelActivity extends AppCompatActivity {
     private HotelAdapter hotelAdapter;
     private List<Hotel> hotelList = new ArrayList<>();
 
-
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_hotel);
         SearchView searchView = findViewById(R.id.searchHotel);
         listView = findViewById(R.id.listviewHotel);
+        username = getIntent().getStringExtra("username");
         hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item1);
         listView.setAdapter(hotelAdapter);
         themData();
@@ -60,8 +61,9 @@ public class AllHotelActivity extends AppCompatActivity {
                 // Get the selected vehicle item
                 Hotel hotel = (Hotel) adapterView.getItemAtPosition(i);
                 // Pass the selected vehicle to a new activity to show its details
-                Intent intent = new Intent(AllHotelActivity.this, HotelDetailActivity.class);
+                Intent intent = new Intent(AllHotelActivity.this, DetailHotelActivity.class);
                 intent.putExtra("hotel", hotel);
+                intent.putExtra("username",username);
                 startActivity(intent);
             }
         });
@@ -69,7 +71,7 @@ public class AllHotelActivity extends AppCompatActivity {
 
     protected void themData() {
 
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Hotel>> call = apiService.getHotels();
         call.enqueue(new Callback<List<Hotel>>() {
             @Override

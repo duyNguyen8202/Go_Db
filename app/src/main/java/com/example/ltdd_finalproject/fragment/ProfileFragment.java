@@ -31,6 +31,7 @@ public class ProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     Customer customer;
+    String username;
     private TextView customerIdTextView, fullNameTextView, emailTextView, genderTextView,
             birthDayTextView, addressTextView, phoneNumberTextView;
     private ProfileAdapter profileAdapter;
@@ -98,7 +99,7 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     if (bundle != null) {
         // retrieve the Customer object from the Bundle
         customer = (Customer) bundle.getSerializable("customer");
-
+        username =  (String) bundle.getSerializable("username");
         if (customer != null) {
             // do something with the Customer object
             setProfile(customer);

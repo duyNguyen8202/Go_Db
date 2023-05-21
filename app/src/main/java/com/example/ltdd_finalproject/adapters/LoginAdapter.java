@@ -12,7 +12,7 @@ import retrofit2.Retrofit;
 public class LoginAdapter {
     private final API myAPI;
     public LoginAdapter() {
-        Retrofit retrofit = RetrofitClient.getRetrofitLogin();
+        Retrofit retrofit = RetrofitClient.getRetrofit();
         myAPI = retrofit.create(API.class);
     }
 

@@ -1,22 +1,18 @@
-package com.example.ltdd_finalproject.fragment;
-
-import static android.content.ContentValues.TAG;
+package com.example.ltdd_finalproject.fragment.Staff;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.activity.StaffActivity;
-import com.example.ltdd_finalproject.adapters.staffAdapter.sTourAdapter;
-import com.example.ltdd_finalproject.models.Tour;
+import com.example.ltdd_finalproject.adapters.staffAdapter.sPlaceAdapter;
+import com.example.ltdd_finalproject.models.Place;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 
@@ -26,11 +22,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TourFragment extends Fragment {
-
+public class PlaceFragment extends Fragment {
     private RecyclerView recyclerView;
-    private sTourAdapter tourAdapter;
-    private List<Tour> tourList;
+    private sPlaceAdapter placeAdapter;
+    private List<Place> hotelList;
 
 
     @Override
@@ -39,14 +34,14 @@ public class TourFragment extends Fragment {
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        tourAdapter = new sTourAdapter(getActivity());
+        placeAdapter = new sPlaceAdapter(getActivity());
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         // Thiết lập adapter cho RecyclerView
-        recyclerView.setAdapter(tourAdapter);
+        recyclerView.setAdapter(placeAdapter);
 
         // Gọi API để lấy danh sách các tour
         getTourList();
@@ -57,24 +52,24 @@ public class TourFragment extends Fragment {
     private void getTourList() {
         // Gọi API để lấy danh sách các tour
         // Sau khi lấy được danh sách, cập nhật tourList và tourAdapter
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
-        Call<List<Tour>> call = apiService.getTours();
-        call.enqueue(new Callback<List<Tour>>() {
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
+        Call<List<Place>> call = apiService.getPlaces();
+        call.enqueue(new Callback<List<Place>>() {
             @Override
-            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
+            public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
 
-                tourList = response.body();
-                tourAdapter.setTourList(tourList);
+                hotelList = response.body();
+                placeAdapter.setTourList(hotelList);
                 Log.d("retrofit_suc", response.body().toString());
 
             }
 
             @Override
-            public void onFailure(Call<List<Tour>> call, Throwable t) {
+            public void onFailure(Call<List<Place>> call, Throwable t) {
                 // Xử lý lỗi
                 Log.d("retrofit_error", t.toString());
             }
         });
     }
-}
 
+}

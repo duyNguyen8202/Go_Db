@@ -19,13 +19,13 @@
             android:name=".activity.AllHotelActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HotelDetailActivity"
+            android:name=".activity.DetailHotelActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.VehicleDetailActivity"
+            android:name=".activity.DetailVehicleActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.TourDetailActivity"
+            android:name=".activity.DetailTourActivity"
             android:exported="false" />
         <activity
             android:name=".activity.AllVehicleActivity"
@@ -49,13 +49,13 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.TourDetailActivity"
+            android:name=".activity.DetailTourActivity"
             android:exported="false"/>
         <activity
-            android:name=".activity.HotelDetailActivity"
+            android:name=".activity.DetailHotelActivity"
             android:exported="false"/>
         <activity
-            android:name=".activity.VehicleDetailActivity"
+            android:name=".activity.DetailVehicleActivity"
             android:exported="false"/>
 
         <activity

@@ -1,5 +1,7 @@
 package com.example.ltdd_finalproject.retro;
+
 import com.example.ltdd_finalproject.models.Account;
+import com.example.ltdd_finalproject.models.AddTourResponse;
 import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.LoginResponse;
 import com.example.ltdd_finalproject.models.Place;
@@ -27,22 +29,46 @@ public interface API {
     @POST("admin/account?action=login")
     Call<LoginResponse> login(@Field("username") String username,
                               @Field("password") String password);
-        @FormUrlEncoded
-        @POST("admin/account?action=signupcustomer")
-        Call<RegisterResponse> registerCustomer(@Field("username") String username,
-                                                @Field("full_name") String full_name,
-                                                @Field("email") String email,
-                                                @Field("phone_number") String phone_number,
-                                                @Field("image_link") String image_link,
-                                                @Field("address") String address,
-                                                @Field("gender") boolean gender,
-                                                @Field("birth_day") String birth_day,
-                                                @Field("acc_password") String acc_password);
+
+    @FormUrlEncoded
+    @POST("admin/account?action=signupcustomer")
+    Call<RegisterResponse> registerCustomer(@Field("username") String username,
+                                            @Field("full_name") String full_name,
+                                            @Field("email") String email,
+                                            @Field("phone_number") String phone_number,
+                                            @Field("image_link") String image_link,
+                                            @Field("address") String address,
+                                            @Field("gender") boolean gender,
+                                            @Field("birth_day") String birth_day,
+                                            @Field("acc_password") String acc_password);
+
     @FormUrlEncoded
     @POST("admin/account?action=profile")
-    Call<ProfileResponse> getProfile (@Field("username") String username);
-    @GET("admin/booking")
-    Call<List<Booking>> getBooking();
+    Call<ProfileResponse> getProfile(@Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("admin/booking?action=search")
+    Call<List<Booking>> getBooking(@Field("customer_id") String customer_id);
+
+    @FormUrlEncoded
+    @POST("admin/booking?action=addTour")
+    Call<AddTourResponse> addTour(@Field("customer_id") String customer_id,
+                                  @Field("tour_id") String tour_id,
+                                  @Field("booking_date") String booking_date);
+
+    @FormUrlEncoded
+    @POST("admin/booking?action=addhotel")
+    Call<AddTourResponse> addHotel(@Field("customer_id") String customer_id,
+                                  @Field("hotel_id") String hotel_id,
+                                  @Field("booking_date") String booking_date);
+    @FormUrlEncoded
+    @POST("admin/booking?action=addVehicle")
+    Call<AddTourResponse> addVehicle(@Field("customer_id") String customer_id,
+                                   @Field("vehicle_id") String vehicle_id,
+                                   @Field("booking_date") String booking_date);
+
+    @POST("admin/booking?action=getforStaff")
+    Call<List<Booking>> getUnconfirmedBooking();
 
 
     // Staff

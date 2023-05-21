@@ -7,21 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.TourAdapter;
-import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +28,7 @@ public class AllTourActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TourAdapter mTourAdapter;
     private List<Tour> mTours = new ArrayList<>();
-
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +41,7 @@ public class AllTourActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         themData ();
-
+        username = getIntent().getStringExtra("username");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -67,10 +61,10 @@ public class AllTourActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Tour tour) {
                 // Create an intent to start the detail activity
-                Intent intent = new Intent(AllTourActivity.this, TourDetailActivity.class);
+                Intent intent = new Intent(AllTourActivity.this, DetailTourActivity.class);
                 // Pass the selected tour object to the detail activity
                 intent.putExtra("tour", tour);
-
+                intent.putExtra("username",username);
                 // Start the detail activity
                 startActivity(intent);
             }
@@ -79,7 +73,7 @@ public class AllTourActivity extends AppCompatActivity {
     }
     protected void themData () {
 
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Tour>> call = apiService.getTours();
         call.enqueue(new Callback<List<Tour>>() {
             @Override

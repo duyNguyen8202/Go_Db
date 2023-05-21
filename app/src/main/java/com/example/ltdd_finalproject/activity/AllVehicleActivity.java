@@ -27,12 +27,14 @@ public class AllVehicleActivity extends AppCompatActivity {
     private GridView gridView;
     private VehicleAdapter vehicleAdapter;
     private List<Vehicle> vehicleList = new ArrayList<>();
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_vehicle);
         SearchView searchView = findViewById(R.id.searchVehicle);
         gridView = findViewById(R.id.gridview);
+        username = getIntent().getStringExtra("username");
         themData();
         vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this, vehicleList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);
@@ -56,15 +58,16 @@ public class AllVehicleActivity extends AppCompatActivity {
                 // Get the selected vehicle item
                 Vehicle vehicle = (Vehicle) adapterView.getItemAtPosition(i);
                 // Pass the selected vehicle to a new activity to show its details
-                Intent intent = new Intent(AllVehicleActivity.this, VehicleDetailActivity.class);
+                Intent intent = new Intent(AllVehicleActivity.this, DetailVehicleActivity.class);
                 intent.putExtra("vehicle", vehicle);
+                intent.putExtra("username",username);
                 startActivity(intent);
             }
         });
     }
     protected  void themData()
     {
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Vehicle>> call = apiService.getVehicles();
         call.enqueue(new Callback<List<Vehicle>>() {
             @Override

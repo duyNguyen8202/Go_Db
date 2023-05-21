@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.LoginAdapter;
 import com.example.ltdd_finalproject.models.Customer;
+import com.example.ltdd_finalproject.models.SharedPreferences;
 
 import org.json.JSONObject;
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     protected void setEvent() {
         //Event for login
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +104,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    
+    
 
     protected void anhXa(){
 

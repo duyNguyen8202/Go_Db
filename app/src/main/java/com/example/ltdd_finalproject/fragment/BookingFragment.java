@@ -33,17 +33,27 @@ public class BookingFragment extends Fragment {
 
     private ListView bookingListView;
     private BookingAdapter bookingAdapter;
+    String customer_id;
+    private Bundle bundle;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        bundle = getArguments();
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
+        if (bundle != null) {
+            customer_id = (String) bundle.getSerializable("customer_id");
+        }
 
         bookingListView = view.findViewById(R.id.listViewBooking);
-        API api = RetrofitClient.getRetrofitLogin().create(API.class);
+        API api = RetrofitClient.getRetrofit().create(API.class);
 
         // Gọi phương thức getBooking() từ API
-        Call<List<Booking>> call = api.getBooking();
+        Call<List<Booking>> call = api.getBooking(customer_id);
         call.enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
@@ -68,7 +78,7 @@ public class BookingFragment extends Fragment {
                     if (t instanceof IOException) {
                         // Lỗi kết nối mạng
                         // Hiển thị thông báo lỗi cho người dùng
-                        Toast.makeText(getActivity(), "Network error. Please check your connection.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
                     } else {
                         // Lỗi chung
                         // Hiển thị thông báo lỗi cho người dùng

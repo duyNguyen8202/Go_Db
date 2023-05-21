@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,9 +18,7 @@ import com.example.ltdd_finalproject.activity.AllHotelActivity;
 import com.example.ltdd_finalproject.activity.AllTourActivity;
 import com.example.ltdd_finalproject.activity.AllVehicleActivity;
 import com.example.ltdd_finalproject.adapters.CustomAdapter;
-import com.example.ltdd_finalproject.adapters.HotelAdapter;
-import com.example.ltdd_finalproject.adapters.TourAdapter;
-import com.example.ltdd_finalproject.adapters.VehicleAdapter;
+import com.example.ltdd_finalproject.models.Customer;
 import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
@@ -42,7 +41,9 @@ public class HomeFragment extends Fragment {
     private List<Hotel> hotelList = new ArrayList<>();
     private List<Tour> tourList = new ArrayList<>();
     private List<Vehicle> vehicleList = new ArrayList<>();
-
+    Customer customer;
+    Bundle bundle;
+    String username;
     ///////////
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -84,6 +85,19 @@ public class HomeFragment extends Fragment {
         CustomAdapter customAdapter = new CustomAdapter(getContext(), mdata);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        bundle = getArguments();
+        if (bundle != null) {
+            // retrieve the Customer object from the Bundle
+            customer = (Customer) bundle.getSerializable("customer");
+            username = (String) bundle.getSerializable("username");
+            if (username != null) {
+                // do something with the Customer object
+                Toast.makeText(getContext(), username, Toast.LENGTH_SHORT).show();
+            } else {
+                // handle the case where the customer object is null
+                Toast.makeText(getContext(), "Customer object is null", Toast.LENGTH_SHORT).show();
+            }
+        }
         return view;
     }
 
@@ -153,6 +167,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AllTourActivity.class);
+                intent.putExtra("customerid", customer.getCustomerId());
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -160,6 +176,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AllVehicleActivity.class);
+                intent.putExtra("customerid", customer.getCustomerId());
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -167,6 +185,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AllHotelActivity.class);
+                intent.putExtra("customerid", customer.getCustomerId());
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
@@ -175,7 +195,7 @@ public class HomeFragment extends Fragment {
 
 //////////////////////////////////////
     protected void apiHotel() {
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Hotel>> call = apiService.getHotels();
         call.enqueue(new Callback<List<Hotel>>() {
             @Override
@@ -197,7 +217,7 @@ public class HomeFragment extends Fragment {
     }
 
     protected void apiTour() {
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Tour>> call = apiService.getTours();
         call.enqueue(new Callback<List<Tour>>() {
             @Override
@@ -219,7 +239,7 @@ public class HomeFragment extends Fragment {
     }
 
     protected void apiVehicle() {
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Vehicle>> call = apiService.getVehicles();
         call.enqueue(new Callback<List<Vehicle>>() {
             @Override

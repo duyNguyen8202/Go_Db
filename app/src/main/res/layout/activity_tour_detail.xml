@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.TourDetailActivity">
+    tools:context=".activity.DetailTourActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +18,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Hotel Detail"
+            android:text="Tour Detail"
             android:textColor="#3b608c"
             android:textSize="30dp"
             android:textStyle="bold">
