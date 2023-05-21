@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit;
-    private static final String BASE_URL = "http://192.168.0.103:8080/API_GODB/";
+    private static final String BASE_URL = "http://192.168.1.3:8080/API_GODB/";
 
     public static Retrofit getRetrofit() {
         Gson gson = new GsonBuilder().setLenient().create();

@@ -1,4 +1,4 @@
-package com.example.ltdd_finalproject.fragment;
+package com.example.ltdd_finalproject.fragment.Staff;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.adapters.staffAdapter.sVehicleAdapter;
-import com.example.ltdd_finalproject.models.Vehicle;
+import com.example.ltdd_finalproject.adapters.staffAdapter.sRoomAdapter;
+import com.example.ltdd_finalproject.models.Room;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 
@@ -22,10 +22,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VehicleFragment extends Fragment {
+public class RoomFragment extends Fragment {
     private RecyclerView recyclerView;
-    private sVehicleAdapter vehicleAdapter;
-    private List<Vehicle> vehicleList;
+    private sRoomAdapter roomAdapter;
+    private List<Room> hotelList;
 
 
     @Override
@@ -34,14 +34,14 @@ public class VehicleFragment extends Fragment {
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        vehicleAdapter = new sVehicleAdapter();
+        roomAdapter = new sRoomAdapter();
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         // Thiết lập adapter cho RecyclerView
-        recyclerView.setAdapter(vehicleAdapter);
+        recyclerView.setAdapter(roomAdapter);
 
         // Gọi API để lấy danh sách các tour
         getTourList();
@@ -53,19 +53,19 @@ public class VehicleFragment extends Fragment {
         // Gọi API để lấy danh sách các tour
         // Sau khi lấy được danh sách, cập nhật tourList và tourAdapter
         API apiService = RetrofitClient.getRetrofit().create(API.class);
-        Call<List<Vehicle>> call = apiService.getVehicles();
-        call.enqueue(new Callback<List<Vehicle>>() {
+        Call<List<Room>> call = apiService.getRooms();
+        call.enqueue(new Callback<List<Room>>() {
             @Override
-            public void onResponse(Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
+            public void onResponse(Call<List<Room>> call, Response<List<Room>> response) {
 
-                vehicleList = response.body();
-                vehicleAdapter.setTourList(vehicleList);
+                hotelList = response.body();
+                roomAdapter.setTourList(hotelList);
                 Log.d("retrofit_suc", response.body().toString());
 
             }
 
             @Override
-            public void onFailure(Call<List<Vehicle>> call, Throwable t) {
+            public void onFailure(Call<List<Room>> call, Throwable t) {
                 // Xử lý lỗi
                 Log.d("retrofit_error", t.toString());
             }

@@ -67,6 +67,9 @@ public interface API {
                                    @Field("vehicle_id") String vehicle_id,
                                    @Field("booking_date") String booking_date);
 
+    @POST("admin/booking?action=getforStaff")
+    Call<List<Booking>> getUnconfirmedBooking();
+
 
     // Staff
     ///// Đầu tiên xem tour
