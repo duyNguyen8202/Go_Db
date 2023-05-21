@@ -54,7 +54,7 @@ public class sPlaceAdapter extends RecyclerView.Adapter<sPlaceAdapter.ViewHolder
         return placeList == null ? 0 : placeList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView image;
         private final TextView textName, textPrice;

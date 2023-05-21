@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.AddTourResponse;
 import com.example.ltdd_finalproject.models.SharedPreferences;
-import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
@@ -40,12 +39,12 @@ public class DetailVehicleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vehicle_detail);
+        setContentView(R.layout.activity_detail_vehicle);
         intent = getIntent();
         if (intent != null) {
             intent = getIntent();
             vehicle = (Vehicle) intent.getSerializableExtra("vehicle");
-            username= (String) intent.getStringExtra("username");
+            username= intent.getStringExtra("username");
             Log.d("AllVehicle","không xuất hiện");
         }
         else {

@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                         // TODO: Handle successful login (e.g., navigate to the main activity)
                         if ("Staff".equals(accountType)) {
                             Intent intent = new Intent(LoginActivity.this, StaffActivity.class);
+                            intent.putExtra("username", user);
                             startActivity(intent);
                             finish(); // Tùy chọn: Để kết thúc LoginActivity sau khi chuyển đến StaffActivity
                         }
@@ -80,8 +81,6 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
                     }
                 });
-//                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//                startActivity(intent);
             }
         });
 

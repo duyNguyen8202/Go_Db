@@ -29,7 +29,7 @@ public class LoginAdapter {
                         callback.onLoginFailure("Đăng nhập không thành công.");
                     }
                 } else {
-                    callback.onLoginFailure("Lỗi kết nối đăng nhập.");
+                    callback.onLoginFailure("Sai tài khoản hoặc mật khẩu.");
                 }
             }
 

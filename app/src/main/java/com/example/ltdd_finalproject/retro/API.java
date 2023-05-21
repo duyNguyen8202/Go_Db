@@ -8,6 +8,7 @@ import com.example.ltdd_finalproject.models.Place;
 import com.example.ltdd_finalproject.models.ProfileResponse;
 import com.example.ltdd_finalproject.models.RegisterResponse;
 import com.example.ltdd_finalproject.models.Room;
+import com.example.ltdd_finalproject.models.Staff;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
 import com.example.ltdd_finalproject.models.Booking;
@@ -46,6 +47,13 @@ public interface API {
     @POST("admin/account?action=profile")
     Call<ProfileResponse> getProfile(@Field("username") String username);
 
+    // getStaffId
+    @FormUrlEncoded
+    @POST("admin/account?action=getStaffId")
+    Call<Staff> getStaff(@Field("username") String username);
+
+
+    // booking
     @FormUrlEncoded
     @POST("admin/booking?action=search")
     Call<List<Booking>> getBooking(@Field("customer_id") String customer_id);
@@ -59,16 +67,27 @@ public interface API {
     @FormUrlEncoded
     @POST("admin/booking?action=addhotel")
     Call<AddTourResponse> addHotel(@Field("customer_id") String customer_id,
-                                  @Field("hotel_id") String hotel_id,
-                                  @Field("booking_date") String booking_date);
+                                   @Field("hotel_id") String hotel_id,
+                                   @Field("booking_date") String booking_date);
+
     @FormUrlEncoded
     @POST("admin/booking?action=addVehicle")
     Call<AddTourResponse> addVehicle(@Field("customer_id") String customer_id,
-                                   @Field("vehicle_id") String vehicle_id,
-                                   @Field("booking_date") String booking_date);
+                                     @Field("vehicle_id") String vehicle_id,
+                                     @Field("booking_date") String booking_date);
 
+
+    // booking staff
     @POST("admin/booking?action=getforStaff")
     Call<List<Booking>> getUnconfirmedBooking();
+
+    @POST("admin/booking?action=getforStaffUsed")
+    Call<List<Booking>> getConfirmedBooking();
+
+    @FormUrlEncoded
+    @POST("admin/booking?action=updateBookingforStaff")
+    Call<AddTourResponse> confirmBooking(@Field("booking_id") String booking_id,
+                                         @Field("staff_id") String staff_id);
 
 
     // Staff

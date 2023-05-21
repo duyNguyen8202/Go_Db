@@ -13,8 +13,6 @@ import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.AddTourResponse;
-import com.example.ltdd_finalproject.models.Booking;
-import com.example.ltdd_finalproject.models.RegisterResponse;
 import com.example.ltdd_finalproject.models.SharedPreferences;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.retro.API;
@@ -45,10 +43,10 @@ public class DetailTourActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tour_detail);
+        setContentView(R.layout.activity_detail_tour);
         Intent intent = getIntent();
         tour = (Tour) intent.getSerializableExtra("tour");
-        username= (String) intent.getStringExtra("username");
+        username= intent.getStringExtra("username");
         // Khởi tạo đối tượng CustomerSharedPreferences
         customerID = SharedPreferences.getInstance(this).getCustomer().getCustomerId();
 

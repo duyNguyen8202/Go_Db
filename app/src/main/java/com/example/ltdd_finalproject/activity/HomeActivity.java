@@ -47,31 +47,6 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
         profileAdapter = new ProfileAdapter(); // Initialize the profileAdapter object
         getProfile(username);
 
-        // binding.bottomnavigation.setOnItemSelectedListener(item -> {
-        //     switch (item.getItemId()) {
-        //         case R.id.navigation_home:
-        //             HomeFragment homefragment = new HomeFragment();
-        //             homefragment.setArguments(bundle);
-        //             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, homefragment).commit();
-        //             break;
-        //         case R.id.navigation_profile:
-        //             ProfileFragment profilefragment= new ProfileFragment();
-        //             profilefragment.setArguments(bundle);
-        //             customer = profileAdapter.getCustomer();
-        //             Log.d("customerIDa", customer.getCustomerId());
-        //             SharedPreferences.getInstance(getApplicationContext()).saveCustomer(customer);
-        //             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profilefragment).commit();
-
-        //             break;
-        //         case R.id.navigation_booking:
-        //             BookingFragment bookingfragment = new BookingFragment();
-        //             bookingfragment.setArguments(bundle);
-        //             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, bookingfragment).commit();
-        //             break;
-        //     }
-        //     return true;
-        // });
-
         Intent intent = getIntent();
         String fragmentName = intent.getStringExtra("fragment");
         if (fragmentName != null && fragmentName.equals("booking_fragment")) {
@@ -83,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
 
     private void getProfile(String username) {
         profileAdapter.profile(username, this);
-        Log.d("getProfile", "Customer object is null");
+        Log.d("getProfile", "get profile");
     }
 
     @Override
@@ -93,17 +68,7 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
         bundle.putSerializable("customer", customer);
         bundle.putSerializable ("username",username);
         bundle.putSerializable("customer_id", customerId);
-        //Bundle bundle = new Bundle();
-        //bundle.putSerializable("customer", customer);
 
-        // create a new instance of the ProfileFragment
-        //ProfileFragment profileFragment = new ProfileFragment();
-
-        // set the arguments of the ProfileFragment to the Bundle
-        //profileFragment.setArguments(bundle);
-
-        // replace the current fragment with the ProfileFragment
-        //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profileFragment).commit();
         binding.bottomnavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.navigation_home:

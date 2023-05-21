@@ -45,7 +45,7 @@ public class DetailHotelActivity extends AppCompatActivity {
         intent = getIntent();
         if (intent != null) {
         hotel = (Hotel) intent.getSerializableExtra("hotel");
-        username= (String) intent.getStringExtra("username");
+        username= intent.getStringExtra("username");
         Log.d("AllHotel",username);
         } else {
             finish();

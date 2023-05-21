@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +19,6 @@ import com.example.ltdd_finalproject.models.Staff;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 
-import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class sBookingFragment extends Fragment implements sBookingAdapter.OnItemClickListener {
+public class sBookingConfirmedFragment extends Fragment implements sBookingAdapter.OnItemClickListener {
 
     private RecyclerView recyclerView;
     private sBookingAdapter bookingAdapter;
@@ -74,7 +72,7 @@ public class sBookingFragment extends Fragment implements sBookingAdapter.OnItem
 //        } else {
 //            getConfirmBooking();
 //        }
-        getUnconfirmBooking();
+        getConfirmBooking();
         bookingAdapter.setOnItemClickListener(new sBookingAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Booking booking) {
@@ -95,55 +93,29 @@ public class sBookingFragment extends Fragment implements sBookingAdapter.OnItem
     }
 
 
-    private void getUnconfirmBooking() {
-        // Gọi API để lấy danh sách các booking
-        API apiService = RetrofitClient.getRetrofit().create(API.class);
-        Call<List<Booking>> call = apiService.getUnconfirmedBooking();
-        call.enqueue(new Callback<List<Booking>>() {
-            @Override
-            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                bookingList = response.body();
-                bookingAdapter.setBookingList(bookingList);
-
-                bookingAdapter.setOnItemClickListener(new sBookingAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(Booking booking) {
-                        Intent intent = new Intent(getActivity(), DetailBookingActivity.class);
-                        intent.putExtra("booking", booking);
-                        intent.putExtra("username", username);
-                        if (staff != null) {
-                            Log.d("sbooking", staff.getStaffId());
-                            intent.putExtra("staff", staff);
-                        }
-                        startActivity(intent);
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Call<List<Booking>> call, Throwable t) {
-                // Xử lý lỗi
-                Log.d("retrofit_error", "lỗi lấy danh sách booking " + t);
-            }
-        });
-    }
-
-//    private void getConfirmBooking() {
+//    private void getUnconfirmBooking() {
 //        // Gọi API để lấy danh sách các booking
 //        API apiService = RetrofitClient.getRetrofit().create(API.class);
-//        Call<List<Booking>> call = apiService.getConfirmedBooking();
+//        Call<List<Booking>> call = apiService.getUnconfirmedBooking();
 //        call.enqueue(new Callback<List<Booking>>() {
 //            @Override
 //            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
 //                bookingList = response.body();
 //                bookingAdapter.setBookingList(bookingList);
-//                if (bundle != null) {
-//                    username = (String) bundle.getSerializable("username");
-//                    staff = (Staff) bundle.getSerializable("staff");
-//                }
-//                if (staff != null) {
-//                    Log.d("staffBooking", staff.getStaffId());
-//                }
+//
+//                bookingAdapter.setOnItemClickListener(new sBookingAdapter.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(Booking booking) {
+//                        Intent intent = new Intent(getActivity(), DetailBookingActivity.class);
+//                        intent.putExtra("booking", booking);
+//                        intent.putExtra("username", username);
+//                        if (staff != null) {
+//                            Log.d("sbooking", staff.getStaffId());
+//                            intent.putExtra("staff", staff);
+//                        }
+//                        startActivity(intent);
+//                    }
+//                });
 //            }
 //
 //            @Override
@@ -153,6 +125,32 @@ public class sBookingFragment extends Fragment implements sBookingAdapter.OnItem
 //            }
 //        });
 //    }
+
+    private void getConfirmBooking() {
+        // Gọi API để lấy danh sách các booking
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
+        Call<List<Booking>> call = apiService.getConfirmedBooking();
+        call.enqueue(new Callback<List<Booking>>() {
+            @Override
+            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                bookingList = response.body();
+                bookingAdapter.setBookingList(bookingList);
+                if (bundle != null) {
+                    username = (String) bundle.getSerializable("username");
+                    staff = (Staff) bundle.getSerializable("staff");
+                }
+                if (staff != null) {
+                    Log.d("staffBooking", staff.getStaffId());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Booking>> call, Throwable t) {
+                // Xử lý lỗi
+                Log.d("retrofit_error", "lỗi lấy danh sách booking " + t);
+            }
+        });
+    }
 
 
 }

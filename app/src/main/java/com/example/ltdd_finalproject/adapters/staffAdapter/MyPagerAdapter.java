@@ -1,4 +1,4 @@
-package com.example.ltdd_finalproject.adapters;
+package com.example.ltdd_finalproject.adapters.staffAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

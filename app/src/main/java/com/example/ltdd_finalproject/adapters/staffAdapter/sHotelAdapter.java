@@ -55,7 +55,7 @@ public class sHotelAdapter extends RecyclerView.Adapter<sHotelAdapter.ViewHolder
         return hotelList == null ? 0 : hotelList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView image;
         private final TextView textName, textPrice;

@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.adapters.staffAdapter.sVehicleAdapter;
-import com.example.ltdd_finalproject.models.Vehicle;
+import com.example.ltdd_finalproject.adapters.staffAdapter.sPlaceAdapter;
+import com.example.ltdd_finalproject.models.Place;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 
@@ -22,26 +22,26 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class VehicleFragment extends Fragment {
+public class sPlaceFragment extends Fragment {
     private RecyclerView recyclerView;
-    private sVehicleAdapter vehicleAdapter;
-    private List<Vehicle> vehicleList;
+    private sPlaceAdapter placeAdapter;
+    private List<Place> hotelList;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_doanh_thu, container, false);
+        View view = inflater.inflate(R.layout.fragment_staff_stask, container, false);
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        vehicleAdapter = new sVehicleAdapter();
+        placeAdapter = new sPlaceAdapter(getActivity());
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
         // Thiết lập adapter cho RecyclerView
-        recyclerView.setAdapter(vehicleAdapter);
+        recyclerView.setAdapter(placeAdapter);
 
         // Gọi API để lấy danh sách các tour
         getTourList();
@@ -53,19 +53,19 @@ public class VehicleFragment extends Fragment {
         // Gọi API để lấy danh sách các tour
         // Sau khi lấy được danh sách, cập nhật tourList và tourAdapter
         API apiService = RetrofitClient.getRetrofit().create(API.class);
-        Call<List<Vehicle>> call = apiService.getVehicles();
-        call.enqueue(new Callback<List<Vehicle>>() {
+        Call<List<Place>> call = apiService.getPlaces();
+        call.enqueue(new Callback<List<Place>>() {
             @Override
-            public void onResponse(Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
+            public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
 
-                vehicleList = response.body();
-                vehicleAdapter.setTourList(vehicleList);
+                hotelList = response.body();
+                placeAdapter.setTourList(hotelList);
                 Log.d("retrofit_suc", response.body().toString());
 
             }
 
             @Override
-            public void onFailure(Call<List<Vehicle>> call, Throwable t) {
+            public void onFailure(Call<List<Place>> call, Throwable t) {
                 // Xử lý lỗi
                 Log.d("retrofit_error", t.toString());
             }

@@ -21,6 +21,9 @@ public class sTourAdapter extends RecyclerView.Adapter<sTourAdapter.ViewHolder> 
 
     private List<Tour> tourList;
     Activity activity;
+
+    private static OnItemClickListener listener;
+
     public sTourAdapter(Activity activity) {
         this.activity = activity;
     }
@@ -30,14 +33,15 @@ public class sTourAdapter extends RecyclerView.Adapter<sTourAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
+
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public sTourAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.staff_fragment_item, parent, false);
-        return new ViewHolder(view);
+        return new sTourAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull sTourAdapter.ViewHolder holder, int position) {
         Tour tour = tourList.get(position);
 
         Glide.with(activity)
@@ -49,12 +53,22 @@ public class sTourAdapter extends RecyclerView.Adapter<sTourAdapter.ViewHolder> 
         holder.textPrice.setText(String.valueOf(tour.getPrice()));
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(Tour tour);
+    }
+
+    public void setOnItemClickListener(sTourAdapter.OnItemClickListener listener) {
+        sTourAdapter.listener = listener;
+    }
+
+
+
     @Override
     public int getItemCount() {
         return tourList == null ? 0 : tourList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView imageViewTour;
         private final TextView textViewTourName, textPrice;
@@ -64,6 +78,19 @@ public class sTourAdapter extends RecyclerView.Adapter<sTourAdapter.ViewHolder> 
             imageViewTour = itemView.findViewById(R.id.image);
             textViewTourName = itemView.findViewById(R.id.textName);
             textPrice = itemView.findViewById(R.id.textPrice);
+            // Thiết lập sự kiện onclick cho view tổng thể của tour
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            Tour tour = tourList.get(position);
+                            listener.onItemClick(tour);
+                        }
+                    }
+                }
+            });
         }
 
     }
