@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nư" />
+            android:text="Nam" />
 
         <RadioButton
             android:id="@+id/female_radio_button"
@@ -112,7 +112,7 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm"
+        android:text="Xác nhận"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthday_date_picker"
         app:layout_constraintVertical_bias="0.371"

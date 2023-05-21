@@ -10,9 +10,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class LoginAdapter {
-    private API myAPI;
+    private final API myAPI;
     public LoginAdapter() {
-        Retrofit retrofit = RetrofitClient.getRetrofitLogin();
+        Retrofit retrofit = RetrofitClient.getRetrofit();
         myAPI = retrofit.create(API.class);
     }
 
@@ -24,7 +24,7 @@ public class LoginAdapter {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = response.body();
                     if (loginResponse != null && loginResponse.isSuccess()) {
-                        callback.onLoginSuccess(loginResponse.getMessage(), loginResponse.getAccount_type());
+                        callback.onLoginSuccess(loginResponse.getMessage(), loginResponse.getAccount_type(), loginResponse.getUsername());
                     } else {
                         callback.onLoginFailure("Đăng nhập không thành công.");
                     }
@@ -42,7 +42,7 @@ public class LoginAdapter {
     }
 
     public interface LoginCallback {
-        void onLoginSuccess(String message, String accountType);
+        void onLoginSuccess(String message, String accountType, String username);
 
         void onLoginFailure(String error);
     }

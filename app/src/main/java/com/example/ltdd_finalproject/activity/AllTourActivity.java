@@ -6,27 +6,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.TourAdapter;
-import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
+import com.example.ltdd_finalproject.retro.API;
+import com.example.ltdd_finalproject.retro.RetrofitClient;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AllTourActivity extends AppCompatActivity {
     Button allTourBtn;
     private RecyclerView recyclerView;
     private TourAdapter mTourAdapter;
     private List<Tour> mTours = new ArrayList<>();
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,21 +36,19 @@ public class AllTourActivity extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchTour);
         RecyclerView recyclerView = findViewById(R.id.recycleViewTours);
 
-        mTours.add(new Tour("1", "1", "1", "Tour 1", "Place 1", LocalDate.of(2023, 6, 1), LocalDate.of(2023, 6, 5), 2, BigDecimal.valueOf(200.0), "https://example.com/image1.jpg", true));
-        mTours.add(new Tour("2", "2", "2", "Tour 2", "Place 2", LocalDate.of(2023, 7, 1), LocalDate.of(2023, 7, 5), 3, BigDecimal.valueOf(300.0), "https://example.com/image2.jpg", false));
-
-        mTourAdapter = new TourAdapter(this,mTours);
+        mTourAdapter = new TourAdapter(this, mTours);
         recyclerView.setAdapter(mTourAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
-        ///////////////
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        //
+        themData ();
+        username = getIntent().getStringExtra("username");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // Do nothing on submit
                 return false;
             }
+
 
             @Override
             public boolean onQueryTextChange(String newText) {
@@ -61,12 +61,35 @@ public class AllTourActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Tour tour) {
                 // Create an intent to start the detail activity
-                Intent intent = new Intent(AllTourActivity.this, TourDetailActivity.class);
+                Intent intent = new Intent(AllTourActivity.this, DetailTourActivity.class);
                 // Pass the selected tour object to the detail activity
                 intent.putExtra("tour", tour);
-
+                intent.putExtra("username",username);
                 // Start the detail activity
                 startActivity(intent);
+            }
+        });
+
+    }
+    protected void themData () {
+
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
+        Call<List<Tour>> call = apiService.getTours();
+        call.enqueue(new Callback<List<Tour>>() {
+            @Override
+            public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
+                mTours = response.body();
+                mTourAdapter.setTourList(mTours);
+
+                for (int i = 0; i < mTours.size(); i++) {
+                    Log.d("retrofit_suc", mTours.get(i).getTourName());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Tour>> call, Throwable t) {
+                // Xử lý lỗi
+                Log.d("retrofit_error", t.toString());
             }
         });
     }

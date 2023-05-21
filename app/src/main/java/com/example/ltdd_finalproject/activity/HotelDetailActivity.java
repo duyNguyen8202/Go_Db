@@ -19,13 +19,13 @@ public class HotelDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Hotel hotel = (Hotel) intent.getSerializableExtra("hotel");
 
-        txthotelId= (TextView) findViewById(R.id.txthotelId);
-        texthotelName= (TextView) findViewById(R.id.texthotelName);
-        texthotelAddress= (TextView) findViewById(R.id.texthotelAddress);
-        textViewprovince= (TextView) findViewById(R.id.textViewprovince);
-        textViewphoneNumber= (TextView) findViewById(R.id.textViewphoneNumber);
-        textViewemail= (TextView) findViewById(R.id.textViewemail);
-        textViewwebsite= (TextView) findViewById(R.id.textViewwebsite);
+        txthotelId= findViewById(R.id.txthotelId);
+        texthotelName= findViewById(R.id.texthotelName);
+        texthotelAddress= findViewById(R.id.texthotelAddress);
+        textViewprovince= findViewById(R.id.textViewprovince);
+        textViewphoneNumber= findViewById(R.id.textViewphoneNumber);
+        textViewemail= findViewById(R.id.textViewemail);
+        textViewwebsite= findViewById(R.id.textViewwebsite);
 
         txthotelId.setText(hotel.getHotelId());
         texthotelName.setText(hotel.getHotelName());

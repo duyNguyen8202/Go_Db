@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.HotelDetailActivity">
+    tools:context=".activity.DetailHotelActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,6 +12,7 @@
         android:weightSum="12">
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -26,7 +27,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -34,21 +35,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical">
-
             </androidx.cardview.widget.CardView>
-
             <ImageView
                 android:id="@+id/imageViewHotelDetail"
-                android:layout_width="245dp"
-                android:layout_height="245dp"
+                android:layout_width="190dp"
+                android:layout_height="190dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 app:srcCompat="@drawable/profile" />
-
         </LinearLayout>
+
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="11">
+            android:layout_weight="7">
 
             <TableRow
                 android:layout_marginTop="5dp"
@@ -204,12 +203,23 @@
                     android:textSize="20dp"></TextView>
             </TableRow>
         </TableLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/btnBookHotel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book now"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,10 @@ public class Booking {
     private String vehicleId;
     private String tourId;
     private String hotelId;
-    private Date bookingDate;
+    private String bookingDate;
     private String bookingType;
 
-    public Booking(String bookingId, String customerId, String staffId, String vehicleId, String tourId, String hotelId, Date bookingDate, String bookingType) {
+    public Booking(String bookingId, String customerId, String staffId, String vehicleId, String tourId, String hotelId, String bookingDate, String bookingType) {
         this.bookingId = bookingId;
         this.customerId = customerId;
         this.staffId = staffId;
@@ -71,11 +71,11 @@ public class Booking {
         this.hotelId = hotelId;
     }
 
-    public Date getBookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
+    public void setBookingDate(String bookingDate) {
         this.bookingDate = bookingDate;
     }
 
