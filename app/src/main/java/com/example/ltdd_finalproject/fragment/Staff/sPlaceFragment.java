@@ -1,4 +1,4 @@
-package com.example.ltdd_finalproject.fragment;
+package com.example.ltdd_finalproject.fragment.Staff;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.adapters.staffAdapter.sHotelAdapter;
 import com.example.ltdd_finalproject.adapters.staffAdapter.sPlaceAdapter;
-import com.example.ltdd_finalproject.adapters.staffAdapter.sTourAdapter;
-import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Place;
-import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 
@@ -26,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PlaceFragment extends Fragment {
+public class sPlaceFragment extends Fragment {
     private RecyclerView recyclerView;
     private sPlaceAdapter placeAdapter;
     private List<Place> hotelList;
@@ -34,11 +30,11 @@ public class PlaceFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_doanh_thu, container, false);
+        View view = inflater.inflate(R.layout.fragment_staff_stask, container, false);
 
         // Khởi tạo RecyclerView và TourAdapter
         recyclerView = view.findViewById(R.id.doanh_thu_list);
-        placeAdapter = new sPlaceAdapter();
+        placeAdapter = new sPlaceAdapter(getActivity());
 
         // Đặt LayoutManager cho RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -56,7 +52,7 @@ public class PlaceFragment extends Fragment {
     private void getTourList() {
         // Gọi API để lấy danh sách các tour
         // Sau khi lấy được danh sách, cập nhật tourList và tourAdapter
-        API apiService = RetrofitClient.getRetrofitLogin().create(API.class);
+        API apiService = RetrofitClient.getRetrofit().create(API.class);
         Call<List<Place>> call = apiService.getPlaces();
         call.enqueue(new Callback<List<Place>>() {
             @Override

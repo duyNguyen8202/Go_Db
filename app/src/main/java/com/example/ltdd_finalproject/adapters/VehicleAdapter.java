@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
+import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
 import com.example.ltdd_finalproject.models.Vehicle;
 
@@ -32,9 +36,10 @@ import com.example.ltdd_finalproject.models.Vehicle;
 import java.util.List;
 
 public class VehicleAdapter extends BaseAdapter implements Filterable {
-    private Context mContext;
-    private int layout;
-    private LayoutInflater mLayoutInflater;
+    private final Context mContext;
+    Activity activity;
+    private final int layout;
+    private final LayoutInflater mLayoutInflater;
     private List<Vehicle> vehicleList;
     private List<Vehicle> filteredList;
 
@@ -44,6 +49,7 @@ public class VehicleAdapter extends BaseAdapter implements Filterable {
         this.filteredList = new ArrayList<>(datas);
         this.layout = layout;
         this.mLayoutInflater = LayoutInflater.from(context);
+        this.activity = (Activity) context;
     }
 
     @Override
@@ -52,6 +58,11 @@ public class VehicleAdapter extends BaseAdapter implements Filterable {
             return filteredList.size();
         }
         return 0;
+    }
+    public void setVehicleList(List<Vehicle> tourList) {
+        this.vehicleList = tourList;
+        this.filteredList = new ArrayList<>(tourList);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -70,9 +81,9 @@ public class VehicleAdapter extends BaseAdapter implements Filterable {
         if (view == null) {
             view = mLayoutInflater.inflate(layout, null);
             viewHolder = new ViewHolder();
-            viewHolder.txtviewModel = (TextView) view.findViewById(R.id.txtviewModel);
-            viewHolder.txtLicense = (TextView) view.findViewById(R.id.txtLicense);
-            viewHolder.imageViewVehicle = (ImageView) view.findViewById(R.id.imageViewVehicle);
+            viewHolder.txtviewModel = view.findViewById(R.id.txtviewModel);
+            viewHolder.txtLicense = view.findViewById(R.id.txtLicense);
+            viewHolder.imageViewVehicle = view.findViewById(R.id.imageViewVehicle);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -80,7 +91,11 @@ public class VehicleAdapter extends BaseAdapter implements Filterable {
         Vehicle vehicle = filteredList.get(i);
         viewHolder.txtviewModel.setText(vehicle.getModel());
         viewHolder.txtLicense.setText(vehicle.getLicensePlate());
-        //viewHolder.imageViewVehicle.setImageResource(vehicle.getPic());
+
+//        Glide.with(activity)
+//                .load(vehicleList.get(i).get)
+//                .apply(new RequestOptions().override(250, 250))
+//                .into(viewHolder.imageViewVehicle);
         return view;
     }
 

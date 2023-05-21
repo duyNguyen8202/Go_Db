@@ -19,6 +19,18 @@
             android:name=".activity.AllHotelActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.DetailBookingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailHotelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailVehicleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DetailTourActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AllVehicleActivity"
             android:exported="false" />
         <activity
@@ -39,6 +51,7 @@
         <activity
             android:name=".activity.LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".activity.IntroActivity"
             android:exported="true">

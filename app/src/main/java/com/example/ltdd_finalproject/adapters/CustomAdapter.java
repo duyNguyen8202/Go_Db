@@ -23,91 +23,97 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     private final Context mContext;
     private final List<Object> objectList;
-    private static final int VEHICLE=0;
-    private static final int HOTEL=1;
-    private static final int TOUR=2;
+    private static final int VEHICLE = 0;
+    private static final int HOTEL = 1;
+    private static final int TOUR = 2;
 
-    public CustomAdapter(Context context,List<Object> objects)
-    {
-        this.mContext=context;
-        this.objectList=objects;
+    public CustomAdapter(Context context, List<Object> objects) {
+        this.mContext = context;
+        this.objectList = objects;
     }
-    public class VehicleViewHolder extends RecyclerView.ViewHolder{
+
+    public class VehicleViewHolder extends RecyclerView.ViewHolder {
         private final TextView txtviewModel;
         private final TextView txtLicense;
         private ImageView imageViewVehicle;
-        public VehicleViewHolder(View view){
+
+        public VehicleViewHolder(View view) {
             super(view);
-            txtviewModel=(TextView) view.findViewById(R.id.txtviewModel);
-            txtLicense=(TextView) view.findViewById(R.id.txtLicense);
+            txtviewModel = view.findViewById(R.id.txtviewModel);
+            txtLicense = view.findViewById(R.id.txtLicense);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Vehicle vehicle=(Vehicle) objectList.get(getAdapterPosition());
-                    Toast.makeText(mContext,objectList.get(getAdapterPosition()).toString(),Toast.LENGTH_SHORT).show();
+                    Vehicle vehicle = (Vehicle) objectList.get(getAdapterPosition());
+                    Toast.makeText(mContext, objectList.get(getAdapterPosition()).toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }
-    public class HotelViewHolder extends RecyclerView.ViewHolder{
-        TextView textViewHotelName,textViewProvince,textViewDiaChi;
+
+    public class HotelViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewHotelName, textViewProvince, textViewDiaChi;
         ImageView imageViewHotel;
-        public HotelViewHolder(View view){
+
+        public HotelViewHolder(View view) {
             super(view);
-            textViewHotelName=(TextView) view.findViewById(R.id.textViewHotelName);
-            textViewProvince=(TextView) view.findViewById(R.id.textViewProvinceHotel);
-            textViewDiaChi=(TextView) view.findViewById(R.id.textViewDiaChiHotel);
-            imageViewHotel=(ImageView) view.findViewById(R.id.imageViewHotel);
+            textViewHotelName = view.findViewById(R.id.textViewHotelName);
+            textViewProvince = view.findViewById(R.id.textViewProvinceHotel);
+            textViewDiaChi = view.findViewById(R.id.textViewDiaChiHotel);
+            imageViewHotel = view.findViewById(R.id.imageViewHotel);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Hotel hotel=(Hotel) objectList.get(getAdapterPosition());
-                    Toast.makeText(mContext,objectList.get(getAdapterPosition()).toString(),Toast.LENGTH_SHORT).show();
+                    Hotel hotel = (Hotel) objectList.get(getAdapterPosition());
+                    Toast.makeText(mContext, objectList.get(getAdapterPosition()).toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }
-    public class TourViewHolder extends RecyclerView.ViewHolder{
+
+    public class TourViewHolder extends RecyclerView.ViewHolder {
         private final ImageView imageViewTour;
         private final TextView textViewTourName;
         private final TextView textViewNgayDi;
         private final TextView textViewPrice;
         private final TextView textViewSoNguoi;
         private final TextView textViewNoiDi;
-        public TourViewHolder(View view){
+
+        public TourViewHolder(View view) {
             super(view);
-            textViewTourName=(TextView) view.findViewById(R.id.textName);
-            textViewNgayDi=(TextView) view.findViewById(R.id.textViewNgayDi);
-            textViewPrice=(TextView) view.findViewById(R.id.textPrice);
-            textViewSoNguoi=(TextView) view.findViewById(R.id.textViewSoNguoi);
-            textViewNoiDi=(TextView) view.findViewById(R.id.textViewNoiDi);
-            imageViewTour=(ImageView) view.findViewById(R.id.imageViewTour);
+            textViewTourName = view.findViewById(R.id.textName);
+            textViewNgayDi = view.findViewById(R.id.textViewNgayDi);
+            textViewPrice = view.findViewById(R.id.textPrice);
+            textViewSoNguoi = view.findViewById(R.id.textViewSoNguoi);
+            textViewNoiDi = view.findViewById(R.id.textViewNoiDi);
+            imageViewTour = view.findViewById(R.id.imageViewTour);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Tour tour=(Tour) objectList.get(getAdapterPosition());
-                    Toast.makeText(mContext,objectList.get(getAdapterPosition()).toString(),Toast.LENGTH_SHORT).show();
+                    Tour tour = (Tour) objectList.get(getAdapterPosition());
+                    Toast.makeText(mContext, objectList.get(getAdapterPosition()).toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        switch (viewType){
+        switch (viewType) {
             case VEHICLE:
-                View vehicleView= layoutInflater.inflate(R.layout.vehicle_item,parent,false);
+                View vehicleView = layoutInflater.inflate(R.layout.vehicle_item, parent, false);
                 return new VehicleViewHolder(vehicleView);
         }
-        switch (viewType){
+        switch (viewType) {
             case HOTEL:
-                View hotelView= layoutInflater.inflate(R.layout.hotel_item1,parent,false);
+                View hotelView = layoutInflater.inflate(R.layout.hotel_item1, parent, false);
                 return new HotelViewHolder(hotelView);
         }
-        switch (viewType){
+        switch (viewType) {
             case TOUR:
-                View tourView= layoutInflater.inflate(R.layout.tour_item,parent,false);
+                View tourView = layoutInflater.inflate(R.layout.tour_item, parent, false);
                 return new TourViewHolder(tourView);
             default:
                 break;
@@ -118,7 +124,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Log.d("CustomAdapter", "Binding data to view holder at position " + position);
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case VEHICLE:
                 Vehicle vehicle = (Vehicle) objectList.get(position);
                 VehicleViewHolder vehicleViewHolder = (VehicleViewHolder) holder;
@@ -148,14 +154,16 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 break;
         }
     }
+
     @Override
-    public int getItemViewType(int position){
-        if(objectList.get(position)instanceof Vehicle)
-        {return VEHICLE;}
-        else if(objectList.get(position)instanceof Hotel)
-        {return HOTEL;}
-        else if(objectList.get(position)instanceof Tour)
-        {return TOUR;}
+    public int getItemViewType(int position) {
+        if (objectList.get(position) instanceof Vehicle) {
+            return VEHICLE;
+        } else if (objectList.get(position) instanceof Hotel) {
+            return HOTEL;
+        } else if (objectList.get(position) instanceof Tour) {
+            return TOUR;
+        }
         return -1;
     }
 

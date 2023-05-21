@@ -1,4 +1,4 @@
-package com.example.ltdd_finalproject.fragment;
+package com.example.ltdd_finalproject.fragment.Staff;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ public class DoanhThuFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_doanh_thu, container, false);
+        View view = inflater.inflate(R.layout.fragment_staff_stask, container, false);
         // Khởi tạo các thành phần giao diện cho fragment này
         return view;
     }

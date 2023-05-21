@@ -33,41 +33,57 @@ public class BookingFragment extends Fragment {
 
     private ListView bookingListView;
     private BookingAdapter bookingAdapter;
+    String customer_id;
+    private Bundle bundle;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        bundle = getArguments();
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_booking, container, false);
+        if (bundle != null) {
+            customer_id = (String) bundle.getSerializable("customer_id");
+        }
 
         bookingListView = view.findViewById(R.id.listViewBooking);
-        API api = RetrofitClient.getRetrofitLogin().create(API.class);
+        API api = RetrofitClient.getRetrofit().create(API.class);
 
         // Gọi phương thức getBooking() từ API
-        Call<List<Booking>> call = api.getBooking();
+        Call<List<Booking>> call = api.getBooking(customer_id);
         call.enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                if (response.isSuccessful()) {
-                    List<Booking> bookings = response.body();
-                    if (bookings != null) {
-                        // Cập nhật dữ liệu vào ListView
-                        bookingAdapter = new BookingAdapter(getActivity(), bookings);
-                        bookingListView.setAdapter(bookingAdapter);
+                if (getActivity() != null) {
+                    // Add a null check for getActivity()
+                    if (response.isSuccessful()) {
+                        List<Booking> bookings = response.body();
+                        if (bookings != null) {
+                            // Cập nhật dữ liệu vào ListView
+                            bookingAdapter = new BookingAdapter(getActivity(), bookings);
+                            bookingListView.setAdapter(bookingAdapter);
+                        }
                     }
                 }
             }
 
             @Override
             public void onFailure(Call<List<Booking>> call, Throwable t) {
-                // Xử lý khi gọi API thất bại
-                if (t instanceof IOException) {
-                    // Lỗi kết nối mạng
-                    // Hiển thị thông báo lỗi cho người dùng
-                    Toast.makeText(getActivity(), "Network error. Please check your connection.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Lỗi chung
-                    // Hiển thị thông báo lỗi cho người dùng
-                    Toast.makeText(getActivity(), "An error occurred. Please try again later.", Toast.LENGTH_SHORT).show();
+                if (getActivity() != null) {
+                    // Add a null check for getActivity()
+                    // Xử lý khi gọi API thất bại
+                    if (t instanceof IOException) {
+                        // Lỗi kết nối mạng
+                        // Hiển thị thông báo lỗi cho người dùng
+                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Lỗi chung
+                        // Hiển thị thông báo lỗi cho người dùng
+                        Toast.makeText(getActivity(), "An error occurred. Please try again later.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

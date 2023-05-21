@@ -1,8 +1,9 @@
 package com.example.ltdd_finalproject.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Booking {
+public class Booking implements Serializable {
     private String bookingId;
     private String customerId;
     private String staffId;

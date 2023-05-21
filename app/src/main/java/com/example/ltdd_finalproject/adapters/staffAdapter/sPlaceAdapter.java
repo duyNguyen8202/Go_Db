@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters.staffAdapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,18 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Place;
 
 import java.util.List;
 
 public class sPlaceAdapter extends RecyclerView.Adapter<sPlaceAdapter.ViewHolder> {
 
-    private List<Place> tourHotel;
+    private List<Place> placeList;
+    Activity activity;
+    public sPlaceAdapter(Activity activity) {
+        this.activity = activity;
+    }
 
     public void setTourList(List<Place> tourList) {
-        this.tourHotel = tourList;
+        this.placeList = tourList;
         notifyDataSetChanged();
     }
 
@@ -32,18 +38,23 @@ public class sPlaceAdapter extends RecyclerView.Adapter<sPlaceAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Place hotel = tourHotel.get(position);
-//        holder.imageViewTour.setImageResource(tour.getImageLink());
+        Place hotel = placeList.get(position);
+
+        Glide.with(activity)
+                .load(placeList.get(position).getImageLink())
+                .apply(new RequestOptions().override(250, 250))
+                .into(holder.image);
+
         holder.textName.setText(String.valueOf(hotel.getPlaceName()));
         holder.textPrice.setText(String.valueOf(hotel.getDec()));
     }
 
     @Override
     public int getItemCount() {
-        return tourHotel == null ? 0 : tourHotel.size();
+        return placeList == null ? 0 : placeList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView image;
         private final TextView textName, textPrice;

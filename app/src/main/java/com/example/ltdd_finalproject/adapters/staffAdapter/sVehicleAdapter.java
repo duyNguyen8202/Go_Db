@@ -43,7 +43,7 @@ public class sVehicleAdapter extends RecyclerView.Adapter<sVehicleAdapter.ViewHo
         return tourHotel == null ? 0 : tourHotel.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView image;
         private final TextView textName, textPrice;

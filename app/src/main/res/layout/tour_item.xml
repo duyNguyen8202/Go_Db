@@ -8,10 +8,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="330dp"
-        android:background="#EC1F1F"
+        android:layout_height="300dp"
+        android:background="#CC9966"
         android:orientation="vertical"
-        android:weightSum="2"
+        android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,7 +20,7 @@
             android:id="@+id/imageViewTour"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
@@ -36,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:text="Tour Name"
                 android:textColor="#070707"
-                android:textSize="24sp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.054"
@@ -50,27 +51,26 @@
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:textColor="#020202"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintHorizontal_bias="0.046"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTourName"
-                app:layout_constraintVertical_bias="0.811" />
+                app:layout_constraintVertical_bias="0.428" />
 
             <TextView
                 android:id="@+id/textViewSoNguoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="44dp"
                 android:text="So nguoi"
                 android:textColor="#070707"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.938"
-                app:layout_constraintStart_toEndOf="@+id/textViewNoiDi"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.884" />
+                app:layout_constraintVertical_bias="0.92" />
 
             <TextView
                 android:id="@+id/textViewNoiDi"
@@ -81,10 +81,10 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.955"
+                app:layout_constraintHorizontal_bias="0.796"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.528" />
+                app:layout_constraintVertical_bias="0.46" />
 
             <TextView
                 android:id="@+id/textViewNgayDi"
@@ -101,16 +101,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/textViewTourName"
                 app:layout_constraintVertical_bias="0.0" />
 
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="81dp"
-                android:layout_height="53dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.857"
-                app:srcCompat="@android:drawable/ic_input_add" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
