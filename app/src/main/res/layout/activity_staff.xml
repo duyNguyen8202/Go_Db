@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:orientation="horizontal"
             android:weightSum="4">
 
@@ -29,19 +29,28 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/txt_username"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1.5"
                     android:text="Hello Nguyễn Thị Bích Liên"
                     android:textColor="@color/dark_red"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_logout_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.5"
+                    android:background="@drawable/orange_button"
+                    android:text="Logout" />
 
             </LinearLayout>
 
@@ -63,21 +72,21 @@
             android:layout_weight="9"
             android:orientation="vertical"
             android:weightSum="9">
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabMode="scrollable"
+                android:layout_weight="1"
                 app:tabGravity="center"
-                android:layout_weight="1"/>
+                app:tabMode="scrollable" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="8"/>
+                android:layout_weight="7.5" />
         </LinearLayout>
-
 
 
     </LinearLayout>

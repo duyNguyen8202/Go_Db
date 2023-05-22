@@ -41,11 +41,7 @@ public class DetailBookingActivity extends AppCompatActivity {
         intent = getIntent();
         booking = (Booking) intent.getSerializableExtra("booking");
         username = intent.getStringExtra("username");
-        if(username ==null)
-            {
-                Log.d("usernameDetailTour", username);
-                Log.d("bookingDetailTour", booking.getBookingId());
-            }
+
 
         staff = (Staff) intent.getSerializableExtra("staff");
         if (staff == null) {

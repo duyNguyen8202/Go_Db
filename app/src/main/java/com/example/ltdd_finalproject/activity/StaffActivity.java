@@ -1,13 +1,21 @@
 package com.example.ltdd_finalproject.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.staffAdapter.MyPagerAdapter;
 import com.example.ltdd_finalproject.fragment.Staff.DoanhThuFragment;
@@ -34,6 +42,9 @@ public class StaffActivity extends AppCompatActivity {
     TextView txt_username;
     String usernameStaff;
     Staff staff;
+    TextView username;
+    ImageView image;
+    Button btnLogout;
     Bundle bundle = new Bundle();
 
     @Override
@@ -43,6 +54,27 @@ public class StaffActivity extends AppCompatActivity {
         usernameStaff = getIntent().getStringExtra("username");
         getStaff();
         khoiTaoToolBar();
+
+        btnLogout = findViewById(R.id.btn_logout_main);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(StaffActivity.this);
+                builder.setTitle("Logout");
+                builder.setMessage("Do you want to exit?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(StaffActivity.this, IntroActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
     }
 
     public void getStaff() {
@@ -52,6 +84,7 @@ public class StaffActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Staff> call, Response<Staff> response) {
                 staff = response.body();
+                anhxa();
                 bundle.putSerializable("username", usernameStaff);
                 bundle.putSerializable("staff", staff);
             }
@@ -113,6 +146,18 @@ public class StaffActivity extends AppCompatActivity {
         // Khởi tạo TabLayout và kết nối với ViewPager
         tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public void anhxa() {
+        username = findViewById(R.id.txt_username);
+        image = findViewById(R.id.img_profile_main);
+
+        username.setText(String.valueOf(staff.getFullName()));
+        Glide.with(getApplication())
+                .load(staff.getImageLink())
+                .apply(new RequestOptions().override(250, 250))
+                .into(image);
+
     }
 
 }
