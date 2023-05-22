@@ -83,7 +83,7 @@ public class VehicleAdapter extends BaseAdapter implements Filterable {
             viewHolder = new ViewHolder();
             viewHolder.txtviewModel = view.findViewById(R.id.txtviewModel);
             viewHolder.txtLicense = view.findViewById(R.id.txtLicense);
-            viewHolder.imageViewVehicle = view.findViewById(R.id.imageViewVehicle);
+//            viewHolder.imageViewVehicle = view.findViewById(R.id.imageViewVehicle);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();

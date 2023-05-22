@@ -78,13 +78,13 @@ public class HomeFragment extends Fragment {
         allTourBtn = view.findViewById(R.id.buttonTous);
         allVehicleBtn = view.findViewById(R.id.buttonVehicle);
         buttonHotel = view.findViewById(R.id.buttonHotel);
-
-        themData();
-
         recyclerView = view.findViewById(R.id.rv_multipe_view_type);
-        CustomAdapter customAdapter = new CustomAdapter(getContext(), mdata);
-        recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+//        apiTour();
+//        apiVehicle();
+        apiHotel();
+
         bundle = getArguments();
         if (bundle != null) {
             // retrieve the Customer object from the Bundle
@@ -95,62 +95,6 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    protected void themData() {
-
-        apiHotel();
-        apiTour();
-        apiVehicle();
-
-        mdata=new ArrayList<>();
-        // mdata.add(new Vehicle("V02", "CTY01","HONDA-RS","WHITE-BLACK","89-B3-82613",new BigDecimal("150.00"),false));
-        mdata.add(new Hotel(
-                "12345",
-                "Grand Hotel",
-                "123 Main Street",
-                "California",
-                "(123) 456-7890",
-                "info@grandhotel.com",
-                "www.grandhotel.com",
-                "https://example.com/grandhotel.jpg"
-        ));
-        mdata.add(new Vehicle("V03", "CTY02","YAMAHA-JANUS","RED-WHITE","22-B1-77113",new BigDecimal("3222.00"),true));
-
-        mdata.add(new Vehicle("V01", "CTY01","HONDA-RS","RED-BLACK","89-B3-20113",new BigDecimal("250.00"),true));
-
-//    mdata.add(new Tour("1", "1", "1", "Tour 1", "Place 1", LocalDate.of(2023, 6, 1), LocalDate.of(2023, 6, 5), 2, BigDecimal.valueOf(200.0), "https://example.com/image1.jpg", true));
-        mdata.add(new Vehicle("V04", "CTY03","VINF","RED","23-H1-223312",new BigDecimal("9250.00"),true));
-
-        mdata.add(new Hotel(
-                "12345",
-                "Grand Hotel",
-                "123 Main Street",
-                "California",
-                "(123) 456-7890",
-                "info@grandhotel.com",
-                "www.grandhotel.com",
-                "https://example.com/grandhotel.jpg"
-        ));
-//    mdata.add(new Tour("2", "2", "2", "Tour 2", "Place 2", LocalDate.of(2023, 7, 1), LocalDate.of(2023, 7, 5), 3, BigDecimal.valueOf(300.0), "https://example.com/image2.jpg", false));
-
-//        int sizeList = checkSizeList();
-//
-//        int j = 0;
-//        for (int i = 0; i < sizeList; i++) {
-//            if (i < hotelList.size()) {
-//                mdata.add(hotelList.get(j));
-//                j++;
-//            }
-//            if (i < tourList.size()) {
-//                mdata.add(tourList.get(j));
-//                j++;
-//            }
-//            if (j < vehicleList.size()) {
-//                mdata.add(vehicleList.get(j));
-//                j++;
-//            }
-//        }
-
-    }
 
 
     @Override
@@ -187,6 +131,8 @@ public class HomeFragment extends Fragment {
 
     }
 
+
+
 //////////////////////////////////////
     protected void apiHotel() {
         API apiService = RetrofitClient.getRetrofit().create(API.class);
@@ -195,11 +141,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Hotel>> call, Response<List<Hotel>> response) {
                 hotelList = response.body();
-//                hotelAdapter.setHotelList(hotelList);
+                mdata = new ArrayList<>();
+                mdata.addAll(hotelList);
 
-                for (int i = 0; i < hotelList.size(); i++) {
-                    Log.d("retrofit_suc", hotelList.get(i).getHotelName());
-                }
+                CustomAdapter customAdapter = new CustomAdapter(getContext(), mdata);
+                recyclerView.setAdapter(customAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
 
             @Override
@@ -217,11 +164,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Tour>> call, Response<List<Tour>> response) {
                 tourList = response.body();
-//                mTourAdapter.setTourList(tourList);
+                mdata = new ArrayList<>();
+                mdata.addAll(tourList);
 
-                for (int i = 0; i < tourList.size(); i++) {
-                    Log.d("retrofit_suc", tourList.get(i).getTourName());
-                }
+                CustomAdapter customAdapter = new CustomAdapter(getContext(), mdata);
+                recyclerView.setAdapter(customAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
 
             @Override
@@ -239,11 +187,12 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Vehicle>> call, Response<List<Vehicle>> response) {
                 vehicleList = response.body();
-//                vehicleAdapter.setVehicleList(vehicleList);
+                mdata = new ArrayList<>();
+                mdata.addAll(vehicleList);
 
-                for (int i = 0; i < vehicleList.size(); i++) {
-                    Log.d("retrofit_suc", vehicleList.get(i).getModel());
-                }
+                CustomAdapter customAdapter = new CustomAdapter(getContext(), mdata);
+                recyclerView.setAdapter(customAdapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             }
 
             @Override
@@ -254,18 +203,5 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    protected int checkSizeList() {
-        int size1 = hotelList.size();
-        int size2 = tourList.size();
-        int size3 = vehicleList.size();
-
-        if (size1 >= size2 && size1 >= size3) {
-            return size1;
-        } else if (size2 >= size1 && size2 >= size3) {
-            return size2;
-        } else {
-            return size3;
-        }
-    }
 
 }

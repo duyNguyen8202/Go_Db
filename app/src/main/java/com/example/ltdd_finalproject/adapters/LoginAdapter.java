@@ -32,7 +32,6 @@ public class LoginAdapter {
                     callback.onLoginFailure("Sai tài khoản hoặc mật khẩu.");
                 }
             }
-
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 callback.onLoginFailure("Lỗi kết nối.");
@@ -40,10 +39,8 @@ public class LoginAdapter {
             }
         });
     }
-
     public interface LoginCallback {
         void onLoginSuccess(String message, String accountType, String username);
-
         void onLoginFailure(String error);
     }
 }

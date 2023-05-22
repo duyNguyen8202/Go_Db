@@ -1,7 +1,6 @@
 package com.example.ltdd_finalproject.adapters;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,9 +91,9 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
                 .into(holder.imageViewTour);
 
         holder.textViewNgayDi.setText(String.valueOf(tour.getDateGo()));
-        holder.textViewPrice.setText(String.valueOf(tour.getPrice()));
-        holder.textViewNoiDi.setText(String.valueOf(tour.getPlaceGo()));
-        holder.textViewSoNguoi.setText(String.valueOf(tour.getNumPerson()));
+        holder.textViewPrice.setText(tour.getPrice() + " vnd");
+        holder.textViewNgayDi.setText(String.valueOf( tour.getDateGo()));
+        holder.textViewSoNguoi.setText("size: " + tour.getNumPerson());
         holder.textViewTourName.setText(String.valueOf(tour.getTourName()));
     }
 
@@ -105,7 +104,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
 
     public class TourViewHolder extends RecyclerView.ViewHolder implements Serializable {
         private ImageView imageViewTour;
-        private TextView textViewTourName, textViewNgayDi, textViewPrice, textViewSoNguoi, textViewNoiDi;
+        private TextView textViewTourName, textViewNgayDi, textViewPrice, textViewSoNguoi;
 
         public TourViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -130,7 +129,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
             textViewNgayDi = itemView.findViewById(R.id.textViewNgayDi);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewSoNguoi = itemView.findViewById(R.id.textViewSoNguoi);
-            textViewNoiDi = itemView.findViewById(R.id.textViewNoiDi);
+            textViewNgayDi = itemView.findViewById(R.id.textViewNoiDi);
         }
     }
 }

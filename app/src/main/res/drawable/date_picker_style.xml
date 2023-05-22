@@ -1,5 +1,5 @@
 <style android:name="DatePickerTextAppearance"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:name="android:textSize">26sp</item>
+    <item android:name="android:textSize">30dp</item>
     <item android:name="android:textColor">@android:color/black</item>
 </style>

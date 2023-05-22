@@ -66,7 +66,7 @@ public class HotelAdapter extends BaseAdapter {
             convertView = inflater.inflate(layout, null);
             viewHolder = new ViewHolder();
             viewHolder.textViewHotelName = convertView.findViewById(R.id.textViewHotelName);
-            viewHolder.textViewProvince = convertView.findViewById(R.id.textViewProvinceHotel);
+//            viewHolder.textViewProvince = convertView.findViewById(R.id.textViewProvinceHotel);
             viewHolder.textViewDiaChi = convertView.findViewById(R.id.textViewDiaChiHotel);
             viewHolder.imageViewHotel = convertView.findViewById(R.id.imageViewHotel);
             convertView.setTag(viewHolder);
@@ -74,7 +74,7 @@ public class HotelAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.textViewHotelName.setText(hotel.getHotelName());
-        viewHolder.textViewProvince.setText(hotel.getProvince());
+//        viewHolder.textViewProvince.setText(hotel.getProvince());
         viewHolder.textViewDiaChi.setText(hotel.getHotelAddress());
 
         Glide.with(activity)

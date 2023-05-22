@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#CC9966"
-    app:cardCornerRadius="20dp">
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="20dp"
+    android:layout_marginTop="6dp">
 
     <LinearLayout
+
         android:layout_width="match_parent"
-        android:layout_height="183dp"
+        android:layout_height="160dp"
         android:background="#CCCC99"
-        android:weightSum="2"
+        android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,14 +21,14 @@
             android:id="@+id/imageViewHotel"
             android:layout_width="435dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="1.7"
             android:scaleType = "centerCrop"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#0C0C0C"
+            android:layout_weight="1.3"
+            android:background="#6699CC"
             android:orientation="vertical">
 
             <TextView
@@ -34,29 +36,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:background="#03B89E9E"
                 android:text="Hotel Name"
-                android:textColor="#F8F6F6"
+                android:textColor="	#333366"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/textViewProvinceHotel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_width="68dp"
+                android:layout_height="0dp"
+                android:layout_weight="0"
                 android:background="#03B89E9E"
-                android:text="Province"
+                android:text=""
                 android:textColor="#F8F6F6"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textViewDiaChiHotel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:background="#03B89E9E"
                 android:text="Dia chi"
-                android:textColor="#F8F6F6"
+                android:textColor="#99CCCC"
                 android:textSize="18sp" />
 
 

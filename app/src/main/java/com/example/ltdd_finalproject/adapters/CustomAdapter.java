@@ -1,5 +1,6 @@
 package com.example.ltdd_finalproject.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.models.Hotel;
 import com.example.ltdd_finalproject.models.Tour;
@@ -21,6 +24,7 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    Activity activity;
     private final Context mContext;
     private final List<Object> objectList;
     private static final int VEHICLE = 0;
@@ -30,6 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public CustomAdapter(Context context, List<Object> objects) {
         this.mContext = context;
         this.objectList = objects;
+        this.activity = (Activity)  context;
     }
 
     public class VehicleViewHolder extends RecyclerView.ViewHolder {
@@ -138,6 +143,12 @@ public class CustomAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 hotelViewHolder.textViewHotelName.setText(hotel.getHotelName());
                 hotelViewHolder.textViewProvince.setText(hotel.getProvince());
                 hotelViewHolder.textViewDiaChi.setText(hotel.getHotelAddress());
+
+                Glide.with(activity)
+                        .load(hotel.getImageLink())
+                        .apply(new RequestOptions().override(250, 250))
+                        .into(hotelViewHolder.imageViewHotel);
+
                 //hotelViewHolder.imageViewHotel.setImageResource(objectList.get(position));
                 //vehicleViewHolder.imageViewVehicle.setText(objectList.get(position).toString());
                 break;

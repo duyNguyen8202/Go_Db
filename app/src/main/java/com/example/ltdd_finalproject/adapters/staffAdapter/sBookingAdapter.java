@@ -52,7 +52,7 @@ public class sBookingAdapter extends RecyclerView.Adapter<sBookingAdapter.ViewHo
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.listener = listener;
+        sBookingAdapter.listener = listener;
     }
 
 

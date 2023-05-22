@@ -3,7 +3,6 @@ package com.example.ltdd_finalproject.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,7 +16,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ltdd_finalproject.R;
-import com.example.ltdd_finalproject.adapters.staffAdapter.MyPagerAdapter;
 import com.example.ltdd_finalproject.fragment.Staff.DoanhThuFragment;
 import com.example.ltdd_finalproject.fragment.Staff.sBookingConfirmedFragment;
 import com.example.ltdd_finalproject.fragment.Staff.sHotelFragment;
@@ -29,8 +27,6 @@ import com.example.ltdd_finalproject.models.Staff;
 import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 import com.google.android.material.tabs.TabLayout;
-
-import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -99,7 +95,7 @@ public class StaffActivity extends AppCompatActivity {
 
 
     public void khoiTaoToolBar() {
-        txt_username = (TextView) findViewById(R.id.txt_username);
+        txt_username = findViewById(R.id.txt_username);
         txt_username.setText(usernameStaff);
         // Khởi tạo ViewPager và PagerAdapter
         viewPager = findViewById(R.id.view_pager);
@@ -138,6 +134,7 @@ public class StaffActivity extends AppCompatActivity {
 
         // doanh thu
         DoanhThuFragment doanhThuFragment = new DoanhThuFragment();
+
         doanhThuFragment.setArguments(bundle);
         pagerAdapter.addFragment(new DoanhThuFragment(), "Doanh thu");
 

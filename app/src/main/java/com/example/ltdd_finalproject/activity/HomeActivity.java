@@ -58,7 +58,6 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
 
     private void getProfile(String username) {
         profileAdapter.profile(username, this);
-        Log.d("getProfile", "get profile");
     }
 
     @Override
@@ -66,7 +65,7 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
                                  String phoneNumber, String imageLink, String address, boolean gender, String birthDay) {
         customer = new Customer(customerId, fullName, email, phoneNumber, imageLink, address, gender, birthDay);
         bundle.putSerializable("customer", customer);
-        bundle.putSerializable ("username",username);
+        bundle.putSerializable("username", username);
         bundle.putSerializable("customer_id", customerId);
 
         binding.bottomnavigation.setOnItemSelectedListener(item -> {
@@ -77,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, homefragment).commit();
                     break;
                 case R.id.navigation_profile:
-                    ProfileFragment profilefragment= new ProfileFragment();
+                    ProfileFragment profilefragment = new ProfileFragment();
                     profilefragment.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, profilefragment).commit();
                     break;
@@ -89,12 +88,10 @@ public class HomeActivity extends AppCompatActivity implements ProfileAdapter.Pr
             }
             return true;
         });
-        Log.d("onProfileSuccess", "Customer object is null");
     }
 
     @Override
     public void onProfileFailure(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
-        Log.d("onProfileFailure", "Customer object is null");
     }
 }
