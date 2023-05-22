@@ -124,6 +124,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AllHotelActivity.class);
                 intent.putExtra("customerid", customer.getCustomerId());
+//                Log.d("Hiển thị", customer.getCustomerId());
                 intent.putExtra("username", username);
                 startActivity(intent);
             }

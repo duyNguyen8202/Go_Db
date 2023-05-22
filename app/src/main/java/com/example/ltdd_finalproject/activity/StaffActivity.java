@@ -49,6 +49,7 @@ public class StaffActivity extends AppCompatActivity {
         setContentView(R.layout.activity_staff);
         usernameStaff = getIntent().getStringExtra("username");
         getStaff();
+
         khoiTaoToolBar();
 
         btnLogout = findViewById(R.id.btn_logout_main);
@@ -62,6 +63,7 @@ public class StaffActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(StaffActivity.this, IntroActivity.class);
+
                         startActivity(intent);
                     }
                 });
@@ -81,14 +83,17 @@ public class StaffActivity extends AppCompatActivity {
             public void onResponse(Call<Staff> call, Response<Staff> response) {
                 staff = response.body();
                 anhxa();
+
                 bundle.putSerializable("username", usernameStaff);
                 bundle.putSerializable("staff", staff);
+
             }
 
             @Override
             public void onFailure(Call<Staff> call, Throwable t) {
                 // Xử lý lỗi
                 Toast.makeText(StaffActivity.this, "Lỗi gọi api staff trong staff activity", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
