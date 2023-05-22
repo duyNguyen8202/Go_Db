@@ -29,7 +29,7 @@ public class AllHotelActivity extends AppCompatActivity {
     private HotelAdapter hotelAdapter;
     private List<Hotel> hotelList = new ArrayList<>();
 
-    String username;
+    String username,customer_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +37,7 @@ public class AllHotelActivity extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchHotel);
         listView = findViewById(R.id.listviewHotel);
         username = getIntent().getStringExtra("username");
+        customer_id= getIntent().getStringExtra("customerid");
         hotelAdapter = new HotelAdapter(AllHotelActivity.this, hotelList, R.layout.hotel_item1);
         listView.setAdapter(hotelAdapter);
         themData();
@@ -64,6 +65,7 @@ public class AllHotelActivity extends AppCompatActivity {
                 Intent intent = new Intent(AllHotelActivity.this, DetailHotelActivity.class);
                 intent.putExtra("hotel", hotel);
                 intent.putExtra("username",username);
+                intent.putExtra("customerid", customer_id);
                 startActivity(intent);
             }
         });

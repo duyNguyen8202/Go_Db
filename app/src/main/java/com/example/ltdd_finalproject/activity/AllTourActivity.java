@@ -28,7 +28,7 @@ public class AllTourActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TourAdapter mTourAdapter;
     private List<Tour> mTours = new ArrayList<>();
-    String username;
+    String username,customer_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +42,7 @@ public class AllTourActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         themData ();
         username = getIntent().getStringExtra("username");
+        customer_id= getIntent().getStringExtra("customerid");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -65,6 +66,7 @@ public class AllTourActivity extends AppCompatActivity {
                 // Pass the selected tour object to the detail activity
                 intent.putExtra("tour", tour);
                 intent.putExtra("username",username);
+                intent.putExtra("customerid", customer_id);
                 // Start the detail activity
                 startActivity(intent);
             }

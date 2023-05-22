@@ -46,12 +46,13 @@ public class DetailHotelActivity extends AppCompatActivity {
         if (intent != null) {
         hotel = (Hotel) intent.getSerializableExtra("hotel");
         username= intent.getStringExtra("username");
+        customerID = intent.getStringExtra("customerid");
         Log.d("AllHotel",username);
         } else {
             finish();
         }
         // Khởi tạo đối tượng CustomerSharedPreferences
-        customerID = SharedPreferences.getInstance(this).getCustomer().getCustomerId();
+
         anhxa();
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
