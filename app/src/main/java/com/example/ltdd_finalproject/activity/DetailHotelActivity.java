@@ -112,7 +112,7 @@ public class DetailHotelActivity extends AppCompatActivity {
         texthotelName= findViewById(R.id.texthotelName);
         texthotelAddress= findViewById(R.id.texthotelAddress);
         textViewprovince= findViewById(R.id.textViewprovince);
-        textViewphoneNumber= findViewById(R.id.textViewphoneNumber);
+        textViewphoneNumber= findViewById(R.id.textViewVehicle);
         textViewemail= findViewById(R.id.textViewemail);
         textViewwebsite= findViewById(R.id.textViewwebsite);
 

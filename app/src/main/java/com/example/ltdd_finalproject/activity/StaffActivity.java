@@ -2,6 +2,7 @@ package com.example.ltdd_finalproject.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.ltdd_finalproject.R;
 import com.example.ltdd_finalproject.adapters.staffAdapter.MyPagerAdapter;
+import com.example.ltdd_finalproject.fragment.Staff.DoanhThuFragment;
 import com.example.ltdd_finalproject.fragment.Staff.sBookingConfirmedFragment;
 import com.example.ltdd_finalproject.fragment.Staff.sHotelFragment;
 import com.example.ltdd_finalproject.fragment.Staff.sPlaceFragment;
@@ -20,6 +22,8 @@ import com.example.ltdd_finalproject.retro.API;
 import com.example.ltdd_finalproject.retro.RetrofitClient;
 import com.google.android.material.tabs.TabLayout;
 
+import org.w3c.dom.Text;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -27,7 +31,7 @@ import retrofit2.Response;
 public class StaffActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
-
+    TextView txt_username;
     String usernameStaff;
     Staff staff;
     Bundle bundle = new Bundle();
@@ -62,7 +66,8 @@ public class StaffActivity extends AppCompatActivity {
 
 
     public void khoiTaoToolBar() {
-
+        txt_username = (TextView) findViewById(R.id.txt_username);
+        txt_username.setText(usernameStaff);
         // Khởi tạo ViewPager và PagerAdapter
         viewPager = findViewById(R.id.view_pager);
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
@@ -99,7 +104,9 @@ public class StaffActivity extends AppCompatActivity {
         pagerAdapter.addFragment(new sPlaceFragment(), "Địa điểm");
 
         // doanh thu
-//        pagerAdapter.addFragment(new DoanhThuFragment(), "Doanh thu");
+        DoanhThuFragment doanhThuFragment = new DoanhThuFragment();
+        doanhThuFragment.setArguments(bundle);
+        pagerAdapter.addFragment(new DoanhThuFragment(), "Doanh thu");
 
         viewPager.setAdapter(pagerAdapter);
 

@@ -43,10 +43,10 @@ public class DetailBookingActivity extends AppCompatActivity {
         username = intent.getStringExtra("username");
         if(username ==null)
             {
-
+                Log.d("usernameDetailTour", username);
+                Log.d("bookingDetailTour", booking.getBookingId());
             }
-        Log.d("usernameDetailTour", username);
-        Log.d("bookingDetailTour", booking.getBookingId());
+
         staff = (Staff) intent.getSerializableExtra("staff");
         if (staff == null) {
             Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_SHORT).show();
