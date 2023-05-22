@@ -90,9 +90,9 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     fullNameTextView = view.findViewById(R.id.textViewfullName);
     emailTextView = view.findViewById(R.id.textViewEmail);
     genderTextView = view.findViewById(R.id.textViewGender);
-    birthDayTextView = view.findViewById(R.id.textViewbirthDay);
-    addressTextView = view.findViewById(R.id.textViewaddress);
-    phoneNumberTextView = view.findViewById(R.id.textViewphoneNumber);
+    birthDayTextView = view.findViewById(R.id.textViewHotel);
+    addressTextView = view.findViewById(R.id.textViewTour);
+    phoneNumberTextView = view.findViewById(R.id.textViewVehicle);
     Bundle bundle = getArguments();
 
 
