@@ -51,13 +51,15 @@ public class sBookingFragment extends Fragment implements sBookingAdapter.OnItem
         bundle = getArguments();
         if (bundle != null) {
             username = (String) bundle.getSerializable("username");
-            Log.d("Username", "staff.getStaffId()");
+
             staff = (Staff) bundle.getSerializable("staff");
+
         }
         if (staff != null) {
             Log.d("staffBooking", staff.getStaffId());
         }
         //
+
 
         recyclerView = view.findViewById(R.id.doanh_thu_list);
         bookingAdapter = new sBookingAdapter(getActivity());
@@ -82,7 +84,6 @@ public class sBookingFragment extends Fragment implements sBookingAdapter.OnItem
                 intent.putExtra("booking", booking);
                 intent.putExtra("username", username);
                 intent.putExtra("staff", staff);
-
                 startActivity(intent);
             }
         });
