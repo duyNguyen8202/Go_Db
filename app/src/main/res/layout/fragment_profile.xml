@@ -47,7 +47,7 @@
         </LinearLayout>
 
         <TableLayout
-            android:layout_weight="5"
+            android:layout_weight="6"
             android:layout_width="match_parent"
             android:layout_height="0dp">
             <TableRow
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Logout"
-                android:textColor="#3b608c"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

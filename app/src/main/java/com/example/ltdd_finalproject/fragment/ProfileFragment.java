@@ -1,4 +1,5 @@
 package com.example.ltdd_finalproject.fragment;
+import android.content.Intent;
 import 	android.util.Log;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,10 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ltdd_finalproject.R;
+import com.example.ltdd_finalproject.activity.HomeActivity;
+import com.example.ltdd_finalproject.activity.IntroActivity;
+import com.example.ltdd_finalproject.activity.LoginActivity;
 import com.example.ltdd_finalproject.adapters.ProfileAdapter;
 
 import androidx.fragment.app.Fragment;
 
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +37,7 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
     Customer customer;
     String username;
+    private Button btnlogout;
     private TextView customerIdTextView, fullNameTextView, emailTextView, genderTextView,
             birthDayTextView, addressTextView, phoneNumberTextView;
     private ProfileAdapter profileAdapter;
@@ -93,6 +99,15 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
     birthDayTextView = view.findViewById(R.id.textViewbirthDay);
     addressTextView = view.findViewById(R.id.textViewaddress);
     phoneNumberTextView = view.findViewById(R.id.textViewphoneNumber);
+    btnlogout = view.findViewById(R.id.btn_logout);
+    btnlogout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getActivity(), IntroActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
+    });
     Bundle bundle = getArguments();
 
 

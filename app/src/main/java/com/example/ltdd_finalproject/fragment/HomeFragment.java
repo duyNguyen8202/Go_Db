@@ -90,13 +90,7 @@ public class HomeFragment extends Fragment {
             // retrieve the Customer object from the Bundle
             customer = (Customer) bundle.getSerializable("customer");
             username = (String) bundle.getSerializable("username");
-            if (username != null) {
-                // do something with the Customer object
-                Toast.makeText(getContext(), username, Toast.LENGTH_SHORT).show();
-            } else {
-                // handle the case where the customer object is null
-                Toast.makeText(getContext(), "Customer object is null", Toast.LENGTH_SHORT).show();
-            }
+
         }
         return view;
     }
