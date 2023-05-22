@@ -48,7 +48,7 @@ public class DetailTourActivity extends AppCompatActivity {
         tour = (Tour) intent.getSerializableExtra("tour");
         username= intent.getStringExtra("username");
         // Khởi tạo đối tượng CustomerSharedPreferences
-        customerID = SharedPreferences.getInstance(this).getCustomer().getCustomerId();
+        customerID = intent.getStringExtra("customerid");
 
         anhxa();
 

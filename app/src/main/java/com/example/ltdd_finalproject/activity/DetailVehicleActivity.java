@@ -51,7 +51,7 @@ public class DetailVehicleActivity extends AppCompatActivity {
             finish();
         }
         // Khởi tạo đối tượng CustomerSharedPreferences
-        customerID = SharedPreferences.getInstance(this).getCustomer().getCustomerId();
+        customerID = intent.getStringExtra("customerid");
         btnBookV = findViewById(R.id.btnBookVehicle);
 
         txtvehicleId= findViewById(R.id.txtvehicleId);

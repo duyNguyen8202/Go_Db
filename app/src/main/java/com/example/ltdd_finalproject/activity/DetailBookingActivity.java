@@ -44,9 +44,8 @@ public class DetailBookingActivity extends AppCompatActivity {
 
 
         staff = (Staff) intent.getSerializableExtra("staff");
-        if (staff == null) {
-            Toast.makeText(getApplicationContext(), "null", Toast.LENGTH_SHORT).show();
-        }
+
+      
         anhxa();
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {

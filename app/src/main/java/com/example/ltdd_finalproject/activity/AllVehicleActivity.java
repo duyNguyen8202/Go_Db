@@ -27,7 +27,7 @@ public class AllVehicleActivity extends AppCompatActivity {
     private GridView gridView;
     private VehicleAdapter vehicleAdapter;
     private List<Vehicle> vehicleList = new ArrayList<>();
-    String username;
+    String username,customer_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class AllVehicleActivity extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchVehicle);
         gridView = findViewById(R.id.gridview);
         username = getIntent().getStringExtra("username");
+        customer_id= getIntent().getStringExtra("customerid");
         themData();
         vehicleAdapter = new VehicleAdapter(AllVehicleActivity.this, vehicleList, R.layout.vehicle_item );
         gridView.setAdapter(vehicleAdapter);
@@ -61,6 +62,7 @@ public class AllVehicleActivity extends AppCompatActivity {
                 Intent intent = new Intent(AllVehicleActivity.this, DetailVehicleActivity.class);
                 intent.putExtra("vehicle", vehicle);
                 intent.putExtra("username",username);
+                intent.putExtra("customerid", customer_id);
                 startActivity(intent);
             }
         });
